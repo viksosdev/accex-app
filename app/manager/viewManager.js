@@ -1,0 +1,31 @@
+function adjustView(mainWindow, sidebarView, browserView, frameView) {
+  const { width, height } = mainWindow.getBounds();
+
+  const sidebarWidth = 200;
+  const frameHeight = 0;
+
+  sidebarView.setBounds({
+    x: 0,
+    y: frameHeight,
+    width: sidebarWidth,
+    height,
+  });
+
+  browserView.setBounds({
+    x: sidebarWidth,
+    y: frameHeight,
+    width: width - sidebarWidth,
+    height: height - frameHeight - 30,
+  });
+
+  frameView.setBounds({
+    x: 0,
+    y: 0,
+    width: width,
+    height: frameHeight,
+  });
+}
+
+module.exports = {
+  adjustView,
+};

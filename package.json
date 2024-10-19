@@ -1,0 +1,17 @@
+{
+  "name": "accex-app",
+  "version": "1.0.1",
+  "description": "",
+  "main": "./app/main/main.js",
+  "scripts": {
+    "start": "electron --trace-warnings .",
+    "dev": "nodemon --exec electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^33.0.1",
+    "nodemon": "^3.1.7"
+  }
+}

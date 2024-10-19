@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro ACCEX</title>
+    <link rel="stylesheet" href="../styles/register.css" />
+  </head>
+  <body>
+    <!-- Contenido de la ventana -->
+    <div class="container">
+      <div class="content">
+        <!-- Progreso de registro con logo alineado -->
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+          "
+        >
+          <!-- Logo de ACCEX -->
+          <div class="header" style="margin-right: 80px">
+            <!-- Añadido margin-right para alinearlo mejor -->
+            <img
+              src="../../assets/images/accex-logo.png"
+              alt="ACCEX logo"
+              style="height: 40px"
+            />
+          </div>
+
+          <!-- Progreso de registro -->
+          <div class="progress">
+            <div class="active">1</div>
+            <div class="inactive">2</div>
+            <div class="inactive">3</div>
+          </div>
+        </div>
+
+        <!-- Título -->
+        <h2>Registro</h2>
+        <p>
+          Comienza creando una cuenta con tu nombre de usuario, correo
+          electrónico y contraseña para poder utilizar ACCEX desde cero.
+        </p>
+
+        <!-- Opciones de inicio de sesión y QR -->
+        <div
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          <div class="login-options">
+            <button>
+              <img src="../../assets/icons/ic_google.png" alt="Google" />
+              Continuar con Google
+            </button>
+            <button>
+              <img src="../../assets/icons/ic_apple.png" alt="Apple" />
+              Continuar con Apple
+            </button>
+            <button>
+              <img src="../../assets/icons/ic_phone.png" alt="Celular" />
+              Continuar con Celular
+            </button>
+          </div>
+          <div class="divider"></div>
+          <div class="qr-section">
+            <p>Iniciar sesión Código QR</p>
+            <img src="../../assets/icons/qr.png" alt="QR Code" />
+          </div>
+        </div>
+
+        <!-- Botón de aceptar -->
+        <button class="accept" id="aceptar">Aceptar</button>
+      </div>
+    </div>
+
+    <script src="../scripts/register.js"></script>
+  </body>
+</html>
