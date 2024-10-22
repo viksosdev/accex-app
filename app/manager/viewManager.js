@@ -1,8 +1,8 @@
 function adjustView(mainWindow, sidebarView, browserView, frameView) {
   const { width, height } = mainWindow.getBounds();
 
-  const sidebarWidth = 200;
-  const frameHeight = 0;
+  const sidebarWidth = 75;
+  const frameHeight = 75;
 
   sidebarView.setBounds({
     x: 0,

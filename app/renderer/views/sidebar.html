@@ -1,23 +1,64 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sidebar</title>
-    <link rel="stylesheet" href="../styles/sidebar.css" />
-  </head>
-  <body>
-    <h1>Mi Sidebar</h1>
-    <!-- Barra de búsqueda -->
-    <input type="text" id="search-bar" placeholder="Escribe tu consulta..." />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Sidebar</title>
+		<link rel="stylesheet" href="../styles/sidebar.css" />
+	</head>
+	<body>
+		<h1>Mi Sidebar</h1>
 
-    <button id="google">Ir a Google</button>
-    <button id="facebook">Ir a Facebook</button>
-    <button id="whatsapp">Ir a WhatsApp</button>
+		<input type="text" id="search-bar" placeholder="Escribe tu consulta..." />
 
-    <!-- Indicador de carga -->
-    <div id="loading">Cargando...</div>
+		<button id="google">Ir a Google</button>
+		<button id="facebook">Ir a Facebook</button>
+		<button id="whatsapp">Ir a WhatsApp</button>
 
-    <script src="../scripts/sidebar.js"></script>
-  </body>
+		<div id="loading">Cargando...</div>
+
+		<script src="../scripts/sidebar.js"></script>
+	</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Sidebar</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background: #b2d5f7;
+				/* background-color: white; */
+
+				display: flex;
+				flex-direction: column;
+			}
+			html {
+				border-right: 1px solid gray;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<button style="border: none; background-color: transparent">
+			<svg
+				width="40"
+				height="40"
+				viewBox="0 0 40 40"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path
+					d="M10 24H35M10 13H35M10 35H35"
+					stroke="#0D0D0D"
+					stroke-width="3.38462"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			</svg>
+		</button>
+	</body>
 </html>

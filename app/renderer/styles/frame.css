@@ -1,24 +1,17 @@
-/* Estilos para la barra superior personalizada */
-#title-bar {
-  background-color: #333;
-  color: white;
-  height: 30px;
-  padding: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  -webkit-app-region: drag; /* Hace que la barra sea "draggable" */
+.frame-button {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	outline: none;
 }
 
-#title-bar button {
-  -webkit-app-region: no-drag; /* Evita que los botones sean "draggables" */
-  background-color: transparent;
-  border: none;
-  color: white;
-  cursor: pointer;
-  padding: 5px;
+/* button.frame-button.favorite-button {
+	padding: 3px !important;
+	border-radius: 10px !important;
 }
 
-#title-bar button:hover {
-  background-color: #555;
-}
+.frame-button.favorite-button:hover {
+	background-color: gray;
+  outline: 1px solid gray;
+
+} */
