@@ -18,3 +18,9 @@ contextBridge.exposeInMainWorld('appNavigate', {
     if (data === 'load-dashboard-page') ipcRenderer.send('load-dashboard');
   },
 });
+
+contextBridge.exposeInMainWorld('navigateAPI', {
+  to: (data) => {
+    ipcRenderer.send('browser-navigate', data);
+  },
+});
