@@ -1,9 +1,9 @@
 document.getElementById("google").addEventListener("click", () => {
-	window.appNavigate.go("https://www.google.com");
+	window.navigateAPI.to("https://www.google.com");
 });
 
 document.getElementById("facebook").addEventListener("click", () => {
-	window.appNavigate.go("https://www.facebook.com");
+	window.navigateAPI.to("https://www.facebook.com");
 });
 
 document.getElementById("back").addEventListener("click", () => {
