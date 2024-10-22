@@ -1,6 +1,7 @@
 const { WebContentsView } = require('electron');
 const path = require('path');
 const { adjustView } = require('./viewManager');
+const ipcDashboard = require('./ipcDashboard');
 
 function createDashboardView(mainWindow) {
   const sidebarView = new WebContentsView({
@@ -42,6 +43,8 @@ function createDashboardView(mainWindow) {
   mainWindow.on('resize', () => {
     adjustView(mainWindow, sidebarView, browserView, frameView);
   });
+
+  ipcDashboard.dashboard(browserView, sidebarView, frameView);
 }
 
 module.exports = {

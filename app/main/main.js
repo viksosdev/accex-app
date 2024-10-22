@@ -1,5 +1,5 @@
 const path = require('path');
-const { app, BaseWindow, WebContentsView } = require('electron');
+const { app, BaseWindow, WebContentsView, nativeImage } = require('electron');
 const {
   setGlobalShortcuts,
   deleteShortcuts,
@@ -9,6 +9,10 @@ const { createDashboardView } = require('../manager/dashboard');
 
 let mainWindow;
 
+const appIcon = nativeImage.createFromPath(
+  path.join(__dirname, '..', 'assets', 'icons', 'qr.png')
+);
+
 function createAppWindow() {
   mainWindow = new BaseWindow({
     width: 1280,
@@ -16,6 +20,7 @@ function createAppWindow() {
     minHeight: 800,
     minWidth: 1200,
     frame: true,
+    icon: appIcon,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
