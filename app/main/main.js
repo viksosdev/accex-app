@@ -21,11 +21,11 @@ const appIcon = nativeImage.createFromPath(
 
 function createAppWindow() {
   mainWindow = new BaseWindow({
-    width: 1280,
-    height: 720,
-    minHeight: 800,
-    minWidth: 1200,
-    frame: true,
+    width: 1024,
+    height: 600,
+    minHeight: 600,
+    minWidth: 1024,
+    frame: false,
     icon: appIcon,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
