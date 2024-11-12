@@ -1,3 +1,6 @@
+// Obtén el webview del DOM
+const webview = document.getElementById("webview");
+
 document.getElementById("google").addEventListener("click", () => {
 	window.navigateAPI.to("https://www.google.com");
 });
@@ -5,11 +8,12 @@ document.getElementById("google").addEventListener("click", () => {
 document.getElementById("facebook").addEventListener("click", () => {
 	window.navigateAPI.to("https://www.facebook.com");
 });
-
 document.getElementById("back").addEventListener("click", () => {
-	window.electron.send("navigate-back");
+	webview.goBack();
+	console.log("back");
 });
 
 document.getElementById("forward").addEventListener("click", () => {
-	window.electron.send("navigate-forward");
+	webview.goForward();
+	console.log("forward");
 });
