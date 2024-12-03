@@ -53,11 +53,11 @@ function createDashboardView(mainWindow) {
 }
 
 ipcMain.on('browser-forward', () => {
-  browserView.webContents.goForward();
+  browserView.webContents.navigationHistory.goForward();
 });
 ipcMain.on('browser-back', () => {
-  if (browserView.webContents.canGoBack()) {
-    browserView.webContents.goBack();
+  if (browserView.webContents.navigationHistory.canGoBack()) {
+    browserView.webContents.navigationHistory.goBack();
   }
 });
 
