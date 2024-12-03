@@ -1,6 +1,3 @@
-// Obtén el webview del DOM
-const webview = document.getElementById('webview');
-
 document.getElementById('google').addEventListener('click', () => {
   window.navigateAPI.to('https://www.google.com');
 });
