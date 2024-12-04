@@ -1,10 +1,14 @@
-const { WebContentsView } = require('electron');
+const { WebContentsView, ipcMain } = require('electron');
 const path = require('path');
 const { adjustView } = require('./viewManager');
 const ipcDashboard = require('./ipcDashboard');
 
+let sidebarView;
+let browserView;
+let frameView;
+
 function createDashboardView(mainWindow) {
-  const sidebarView = new WebContentsView({
+  sidebarView = new WebContentsView({
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,
@@ -16,7 +20,7 @@ function createDashboardView(mainWindow) {
     path.join(__dirname, '..', 'renderer', 'views', 'sidebar.html')
   );
 
-  const browserView = new WebContentsView({
+  browserView = new WebContentsView({
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,
@@ -24,9 +28,10 @@ function createDashboardView(mainWindow) {
     },
   });
   mainWindow.contentView.addChildView(browserView);
+  browserView.webContents.openDevTools();
   browserView.webContents.loadURL('https://www.google.com');
 
-  const frameView = new WebContentsView({
+  frameView = new WebContentsView({
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,
@@ -47,6 +52,16 @@ function createDashboardView(mainWindow) {
   ipcDashboard.dashboard(browserView, sidebarView, frameView);
 }
 
+ipcMain.on('browser-forward', () => {
+  browserView.webContents.navigationHistory.goForward();
+});
+ipcMain.on('browser-back', () => {
+  if (browserView.webContents.navigationHistory.canGoBack()) {
+    browserView.webContents.navigationHistory.goBack();
+  }
+});
+
 module.exports = {
   createDashboardView,
+  getViews: () => ({ sidebarView, browserView, frameView }),
 };

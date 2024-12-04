@@ -1,26 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Sidebar</title>
-		<link rel="stylesheet" href="../styles/sidebar.css" />
-	</head>
-	<body>
-		<h1>Mi Sidebar</h1>
-
-		<input type="text" id="search-bar" placeholder="Escribe tu consulta..." />
-
-		<button id="google">Ir a Google</button>
-		<button id="facebook">Ir a Facebook</button>
-		<button id="whatsapp">Ir a WhatsApp</button>
-
-		<div id="loading">Cargando...</div>
-
-		<script src="../scripts/sidebar.js"></script>
-	</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -31,34 +8,129 @@
 			body {
 				font-family: Arial, sans-serif;
 				background: #b2d5f7;
-				/* background-color: white; */
+				margin: 0;
+				display: flex;
+				height: calc(100vh - 90px);
+			}
 
+			/* Estilos de la barra lateral */
+			.sidebar {
+				width: 70px;
 				display: flex;
 				flex-direction: column;
+				align-items: center;
+				padding-top: 20px;
+				gap: 20px;
 			}
-			html {
-				border-right: 1px solid gray;
-				height: 100%;
+
+			.container-sidebutton {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 20px;
+			}
+
+			/* Botones de la barra lateral */
+			.sidebutton {
+				border: none;
+				background-color: transparent;
+				cursor: pointer;
+				transition: scale 0.3s;
+
+				&:hover {
+					scale: 1.2;
+				}
+			}
+
+			/* Iconos en los botones */
+			.sidebutton img {
+				width: 30px;
+				height: 30px;
+			}
+
+			.sidebar img#assistant {
+				width: 40px;
+				aspect-ratio: 16/9;
+			}
+
+			/* Asistente en la parte inferior */
+			#assistant {
+				margin-top: auto;
+				margin-bottom: 20px;
 			}
 		</style>
 	</head>
 	<body>
-		<button style="border: none; background-color: transparent">
-			<svg
-				width="40"
-				height="40"
-				viewBox="0 0 40 40"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path
-					d="M10 24H35M10 13H35M10 35H35"
-					stroke="#0D0D0D"
-					stroke-width="3.38462"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				/>
-			</svg>
-		</button>
+		<!-- Barra lateral -->
+		<div class="sidebar">
+			<!-- Botón menú hamburguesa -->
+			<button class="sidebutton">
+				<svg
+					width="30"
+					height="30"
+					viewBox="0 0 40 40"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M10 12H30M10 20H30M10 28H30"
+						stroke="#0D0D0D"
+						stroke-width="3"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
+				</svg>
+			</button>
+
+			<!-- Título "T. Nav." -->
+			<div style="font-size: 12px; color: #0d0d0d; margin-top: 10px">
+				T. Nav.
+			</div>
+
+			<!-- Iconos de navegación -->
+			<div class="container-sidebutton">
+				<button class="sidebutton">
+					<img
+						src="./../../assets/images/Navegación_por_voz.png"
+						alt="Navegación por voz"
+					/>
+				</button>
+				<button class="sidebutton">
+					<img
+						src="./../../assets/images/Navegación_teclado.png"
+						alt="Navegación por teclado"
+					/>
+				</button>
+				<button class="sidebutton">
+					<img
+						src="./../../assets/images/Navegación_numerica.png"
+						alt="Navegación numérica"
+					/>
+				</button>
+				<button class="sidebutton">
+					<img
+						src="./../../assets/images/Lector_de_pantalla.png"
+						alt="Lector de pantalla"
+					/>
+				</button>
+				<button class="sidebutton">
+					<img
+						src="./../../assets/images/Teclado_virtual.png"
+						alt="Teclado virtual"
+					/>
+				</button>
+			</div>
+
+			<!-- Asistente en la parte inferior -->
+			<div class="container-sidebutton" id="assistant">
+				<button class="sidebutton">
+					<img
+						id="assistant"
+						src="./../../assets/images/Asistente_ACCEX.png"
+						alt="Asistente ACCEX"
+					/>
+				</button>
+			</div>
+		</div>
 	</body>
 </html>
