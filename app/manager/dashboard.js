@@ -28,7 +28,7 @@ function createDashboardView(mainWindow) {
     },
   });
   mainWindow.contentView.addChildView(browserView);
-  browserView.webContents.openDevTools();
+  //browserView.webContents.openDevTools();
   browserView.webContents.loadURL('https://www.google.com');
 
   frameView = new WebContentsView({
