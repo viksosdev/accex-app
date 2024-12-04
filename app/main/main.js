@@ -42,7 +42,7 @@ function startApp() {
     },
   });
   mainWindow.contentView.addChildView(mainView);
-  mainView.webContents.openDevTools();
+  //mainView.webContents.openDevTools();
   mainView.setBounds({
     x: 0,
     y: 0,

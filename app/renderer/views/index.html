@@ -1,26 +1,92 @@
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>ACCEX</title>
-		<link rel="stylesheet" href="../styles/index.css" />
-	</head>
-	<body>
-		<div class="container">
-			<div class="logo">
-				<img src="../../assets/images/accex-logo.png" alt="ACCEX" />
-			</div>
-			<div class="buttons">
-				<button id="create-account">Crear Cuenta</button>
-				<button id="login">Iniciar Sesión</button>
-			</div>
-			<div class="language">
-				<img src="../../assets/images/language-icon.png" alt="Idioma" />
-				<span>Idioma</span>
-			</div>
-		</div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configuración Avanzada</title>
+  <link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Encabezado -->
+    <header class="header">
+      <img src="../../assets/icons/ic_accex.png" alt="Logo Accex" class="logo">
+      <h1 class="title">Configuración Avanzada</h1>
+      <button class="back-button">⬅</button>
+    </header>
 
-		<script src="../scripts/index.js"></script>
-	</body>
+    <!-- Subtítulo -->
+    <p class="subtitle">Activa el control parental si lo requieres, personaliza colores y tamaños de los elementos.</p>
+
+    <!-- Opciones principales -->
+    <div class="main-options">
+      <div class="option-card">
+        <img src="../../assets/icons/ic_parental.png" alt="Control parental">
+        <p>Control parental</p>
+      </div>
+      <div class="option-card">
+        <img src="../../assets/icons/ic_zoom.png" alt="Aumento de tamaño">
+        <p>Aumento de tamaño</p>
+      </div>
+      <div class="option-card">
+        <img src="../../assets/icons/ic_color.png" alt="Colores">
+        <p>Colores</p>
+      </div>
+    </div>
+
+    <!-- Controles secundarios (parte inferior) -->
+    <section class="controls">
+      <!-- Contraste -->
+      <div class="control-item">
+        <p class="control-label">Contraste</p>
+        <div class="horizontal-slider">
+          <button class="slider-arrow left-arrow">◀</button>
+          <div class="contrast-icons">
+              <img src="../../assets/icons/contraste/ic_1.png" alt="contrast-icon">
+              <img src="../../assets/icons/contraste/ic_1.png" alt="contrast-icon">
+              <img src="../../assets/icons/contraste/ic_1.png" alt="contrast-icon">
+              <img src="../../assets/icons/contraste/ic_1.png" alt="contrast-icon">
+              <img src="../../assets/icons/contraste/ic_1.png" alt="contrast-icon">
+              <img src="../../assets/icons/contraste/ic_1.png" alt="contrast-icon">
+              <img src="../../assets/icons/contraste/ic_1.png" alt="contrast-icon">
+          </div>
+          <button class="slider-arrow right-arrow">▶</button>
+        </div>
+      </div>
+
+      <!-- Modo claro -->
+      <div class="control-item">
+        <p class="control-label">Modo</p>
+        <label class="toggle-switch">
+          <input type="checkbox">
+          <span class="slider"></span>
+        </label>
+        <span>Claro</span>
+      </div>
+
+      <!-- Navegador -->
+      <div class="control-item">
+        <p class="control-label">Navegador</p>
+        <div class="horizontal-slider">
+          <button class="slider-arrow left-arrow">◀</button>
+          <div class="navigator-dots">
+            <div class="dot blue"></div>
+            <div class="dot red"></div>
+            <div class="dot green"></div>
+          </div>
+          <button class="slider-arrow right-arrow">▶</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contenedor para accesibilidad y guardar -->
+    <div class="footer-buttons">
+      <div class="accessibility-card">
+        <img src="../../assets/icons/ic_accesibilidad.png" alt="Accesibilidad" class="accessibility-icon">
+      </div>
+      <button class="save-button">Guardar</button>
+    </div>
+  </div>
+  </div>
+</body>
 </html>

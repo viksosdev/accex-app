@@ -1,0 +1,257 @@
+/* Configuración general */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to bottom, #e3f2fd, #ffffff);
+  color: #333;
+}
+
+.main-container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Cabecera */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0d47a1;
+  color: white;
+  padding: 20px 30px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  height: 30px;
+}
+
+.header-title {
+  font-size: 20px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.back-icon {
+  fill: white;
+  width: 24px;
+  height: 24px;
+}
+
+/* Contenedor del perfil */
+.profile-container {
+  max-width: 900px;
+  margin: 50px auto;
+  background: white;
+  border-radius: 15px;
+  padding: 30px 40px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Información del perfil */
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.profile-photo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #0d47a1;
+  object-fit: cover;
+}
+
+.profile-info {
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+.profile-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  color: #0d47a1;
+}
+
+.profile-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.disability-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e3f2fd;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+}
+
+.icon {
+  fill: #0d47a1;
+  width: 20px;
+  height: 20px;
+}
+
+.disability-text {
+  font-size: 16px;
+  color: #333;
+}
+
+.customize-button {
+  background: white;
+  color: #0d47a1;
+  border: 2px solid #0d47a1;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.customize-button:hover {
+  background: #e3f2fd;
+}
+
+/* Formulario */
+.profile-form {
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  border: 1px solid #0d47a1;
+  box-shadow: 0 0 5px rgba(13, 71, 161, 0.3);
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.radio-group label {
+  font-size: 14px;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+input[type="radio"] {
+  margin-right: 10px;
+}
+
+.dual {
+  display: flex;
+  gap: 20px;
+}
+
+.dual > div {
+  flex: 1;
+}
+
+/* Botones */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.primary-button {
+  background: #0d47a1;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.primary-button:hover {
+  background: #083781;
+}
+
+.secondary-button {
+  background: white;
+  color: #0d47a1;
+  border: 2px solid #0d47a1;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.secondary-button:hover {
+  background: #e3f2fd;
+  color: #083781;
+}
+
+/* Adaptaciones responsivas */
+@media screen and (max-width: 768px) {
+  .profile-container {
+    padding: 20px;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-info {
+    margin: 10px 0 20px;
+  }
+
+  .dual {
+    flex-direction: column;
+  }
+}
