@@ -3,7 +3,13 @@ const path = require("path");
 const { adjustView } = require("./viewManager");
 const ipcDashboard = require("./ipcDashboard");
 
+
+let sidebarView;
+let browserView;
+let frameView;
+
 function createDashboardView(mainWindow) {
+
 	const sidebarView = new WebContentsView({
 		webPreferences: {
 			contextIsolation: true,
@@ -57,8 +63,19 @@ function createDashboardView(mainWindow) {
 	});
 
 	ipcDashboard.dashboard(browserView, sidebarView, frameView, botView);
+
 }
+
+ipcMain.on('browser-forward', () => {
+  browserView.webContents.navigationHistory.goForward();
+});
+ipcMain.on('browser-back', () => {
+  if (browserView.webContents.navigationHistory.canGoBack()) {
+    browserView.webContents.navigationHistory.goBack();
+  }
+});
 
 module.exports = {
 	createDashboardView,
+
 };
