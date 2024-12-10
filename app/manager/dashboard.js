@@ -1,69 +1,55 @@
-const { WebContentsView } = require("electron");
-const path = require("path");
-const { adjustView } = require("./viewManager");
-const ipcDashboard = require("./ipcDashboard");
-
+const { WebContentsView, ipcMain } = require('electron');
+const path = require('path');
+const { adjustView } = require('./viewManager');
+const ipcDashboard = require('./ipcDashboard');
 
 let sidebarView;
 let browserView;
 let frameView;
 
 function createDashboardView(mainWindow) {
+  sidebarView = new WebContentsView({
+    webPreferences: {
+      contextIsolation: true,
+      nodeIntegration: false,
+      preload: path.join(__dirname, '..', 'main', 'preload.js'),
+    },
+  });
+  mainWindow.contentView.addChildView(sidebarView);
+  sidebarView.webContents.loadFile(
+    path.join(__dirname, '..', 'renderer', 'views', 'sidebar.html')
+  );
 
-	const sidebarView = new WebContentsView({
-		webPreferences: {
-			contextIsolation: true,
-			nodeIntegration: false,
-			preload: path.join(__dirname, "..", "main", "preload.js"),
-		},
-	});
-	mainWindow.contentView.addChildView(sidebarView);
-	sidebarView.webContents.loadFile(
-		path.join(__dirname, "..", "renderer", "views", "sidebar.html")
-	);
+  browserView = new WebContentsView({
+    webPreferences: {
+      contextIsolation: true,
+      nodeIntegration: false,
+      preload: path.join(__dirname, '..', 'main', 'preload.js'),
+    },
+  });
+  mainWindow.contentView.addChildView(browserView);
+  browserView.webContents.openDevTools();
+  browserView.webContents.loadURL('https://www.google.com');
 
-	const browserView = new WebContentsView({
-		webPreferences: {
-			contextIsolation: true,
-			nodeIntegration: false,
-			preload: path.join(__dirname, "..", "main", "preload.js"),
-		},
-	});
-	mainWindow.contentView.addChildView(browserView);
-	browserView.webContents.loadURL("https://www.google.com");
+  frameView = new WebContentsView({
+    webPreferences: {
+      contextIsolation: true,
+      nodeIntegration: false,
+      preload: path.join(__dirname, '..', 'main', 'preload.js'),
+    },
+  });
+  mainWindow.contentView.addChildView(frameView);
+  frameView.webContents.loadFile(
+    path.join(__dirname, '..', 'renderer', 'views', 'frame.html')
+  );
 
-	const frameView = new WebContentsView({
-		webPreferences: {
-			contextIsolation: true,
-			nodeIntegration: false,
-			preload: path.join(__dirname, "..", "main", "preload.js"),
-		},
-	});
-	mainWindow.contentView.addChildView(frameView);
-	frameView.webContents.loadFile(
-		path.join(__dirname, "..", "renderer", "views", "frame.html")
-	);
+  adjustView(mainWindow, sidebarView, browserView, frameView);
 
-	const botView = new WebContentsView({
-		webPreferences: {
-			contextIsolation: true,
-			nodeIntegration: false,
-			preload: path.join(__dirname, "..", "main", "preload.js"),
-		},
-	});
-	mainWindow.contentView.addChildView(botView);
-	botView.webContents.loadFile(
-		path.join(__dirname, "..", "renderer", "views", "bot.html")
-	);
+  mainWindow.on('resize', () => {
+    adjustView(mainWindow, sidebarView, browserView, frameView);
+  });
 
-	adjustView(mainWindow, sidebarView, browserView, frameView, botView);
-
-	mainWindow.on("resize", () => {
-		adjustView(mainWindow, sidebarView, browserView, frameView, botView);
-	});
-
-	ipcDashboard.dashboard(browserView, sidebarView, frameView, botView);
-
+  ipcDashboard.dashboard(browserView, sidebarView, frameView);
 }
 
 ipcMain.on('browser-forward', () => {
@@ -76,6 +62,6 @@ ipcMain.on('browser-back', () => {
 });
 
 module.exports = {
-	createDashboardView,
-
+  createDashboardView,
+  getViews: () => ({ sidebarView, browserView, frameView }),
 };
