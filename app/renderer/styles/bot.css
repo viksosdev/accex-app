@@ -1,7 +1,8 @@
-body {
+* {
 	margin: 0;
 	padding: 0;
 	font-family: Arial, sans-serif;
+	box-sizing: border-box;
 }
 
 .chatbot-container {
@@ -9,26 +10,30 @@ body {
 	border-radius: 15px;
 	display: flex;
 	flex-direction: column; /* Asegura que el header, mensajes y input estén en columnas */
-	height: 100%; /* Usa todo el espacio del botView */
+	height: 100svh; /* Usa todo el espacio del botView */
 	width: 100%; /* Ajusta al ancho del botView */
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	overflow: hidden; /* Evita desbordamiento del contenedor */
 }
 
 .chatbot-header {
-	background-color: #0d47a1;
+	position: fixed;
+	width: 100%;
 	padding: 10px;
+	top: 0;
+	left: 0;
+	background-color: #0d47a1;
 	text-align: center;
 	font-size: 1.5em;
-	border-bottom: 1px solid #ccc;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	color: #ffffff;
 	flex-shrink: 0; /* Impide que el header cambie de tamaño */
+	box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
 }
 
-.chatbot-header button {
+.chatbot-header * {
 	background: transparent;
 	border: none;
 	color: #ffffff;
@@ -42,21 +47,28 @@ body {
 
 .chatbot-messages {
 	flex: 1; /* Se expande para ocupar todo el espacio restante */
-	padding: 10px;
+	padding: 60px 10px;
+	padding-bottom: 80px;
 	overflow-y: auto; /* Scroll sólo en los mensajes */
 	background-color: #b7d8f8;
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+	box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
 }
 
 .chatbot-input {
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	left: 0;
 	display: flex;
 	border-top: 1px solid #ffffff;
 	background-color: #ffffff;
 	padding: 10px;
 	align-items: center;
 	flex-shrink: 0; /* Fija el tamaño del input */
+	box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
 }
 
 .chatbot-input textarea {
@@ -66,6 +78,7 @@ body {
 	resize: none;
 	border-radius: 5px;
 	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+	box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
 }
 
 .chatbot-input button {
@@ -78,6 +91,7 @@ body {
 	margin-left: 10px;
 	font-size: 1em;
 	transition: background-color 0.3s ease;
+	box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
 }
 
 .chatbot-input button:hover {
@@ -89,8 +103,10 @@ body {
 	border-radius: 10px;
 	max-width: 70%;
 	word-wrap: break-word;
+	text-wrap: pretty;
 	font-size: 0.9em;
 	line-height: 1.4;
+	box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
 }
 
 .message.user {
