@@ -1,136 +1,137 @@
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Sidebar</title>
-		<style>
-			body {
-				font-family: Arial, sans-serif;
-				background: #b2d5f7;
-				margin: 0;
-				display: flex;
-				height: calc(100vh - 90px);
-			}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidebar</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #b2d5f7;
+        margin: 0;
+        display: flex;
+        height: calc(100vh - 90px);
+      }
 
-			/* Estilos de la barra lateral */
-			.sidebar {
-				width: 70px;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				padding-top: 20px;
-				gap: 20px;
-			}
+      /* Estilos de la barra lateral */
+      .sidebar {
+        width: 70px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+        gap: 20px;
+      }
 
-			.container-sidebutton {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				gap: 20px;
-			}
+      .container-sidebutton {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
 
-			/* Botones de la barra lateral */
-			.sidebutton {
-				border: none;
-				background-color: transparent;
-				cursor: pointer;
-				transition: scale 0.3s;
+      /* Botones de la barra lateral */
+      .sidebutton {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        transition: scale 0.3s;
 
-				&:hover {
-					scale: 1.2;
-				}
-			}
+        &:hover {
+          scale: 1.2;
+        }
+      }
 
-			/* Iconos en los botones */
-			.sidebutton img {
-				width: 30px;
-				height: 30px;
-			}
+      /* Iconos en los botones */
+      .sidebutton img {
+        width: 30px;
+        height: 30px;
+      }
 
-			.sidebar img#assistant {
-				width: 40px;
-				aspect-ratio: 16/9;
-			}
+      .sidebar img#assistant {
+        width: 40px;
+        aspect-ratio: 16/9;
+      }
 
-			/* Asistente en la parte inferior */
-			#assistant {
-				margin-top: auto;
-				margin-bottom: 20px;
-			}
-		</style>
-	</head>
-	<body>
-		<!-- Barra lateral -->
-		<div class="sidebar">
-			<!-- Botón menú hamburguesa -->
-			<button class="sidebutton">
-				<svg
-					width="30"
-					height="30"
-					viewBox="0 0 40 40"
-					fill="none"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path
-						d="M10 12H30M10 20H30M10 28H30"
-						stroke="#0D0D0D"
-						stroke-width="3"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-					/>
-				</svg>
-			</button>
+      /* Asistente en la parte inferior */
+      #assistant {
+        margin-top: auto;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Barra lateral -->
+    <div class="sidebar">
+      <!-- Botón menú hamburguesa -->
+      <button class="sidebutton">
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 12H30M10 20H30M10 28H30"
+            stroke="#0D0D0D"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
 
-			<!-- Título "T. Nav." -->
-			<div style="font-size: 12px; color: #0d0d0d; margin-top: 10px">
-				T. Nav.
-			</div>
+      <!-- Título "T. Nav." -->
+      <div style="font-size: 12px; color: #0d0d0d; margin-top: 10px">
+        T. Nav.
+      </div>
 
-			<!-- Iconos de navegación -->
-			<div class="container-sidebutton">
-				<button class="sidebutton">
-					<img
-						src="./../../assets/images/Navegación_por_voz.png"
-						alt="Navegación por voz"
-					/>
-				</button>
-				<button class="sidebutton">
-					<img
-						src="./../../assets/images/Navegación_teclado.png"
-						alt="Navegación por teclado"
-					/>
-				</button>
-				<button class="sidebutton">
-					<img
-						src="./../../assets/images/Navegación_numerica.png"
-						alt="Navegación numérica"
-					/>
-				</button>
-				<button class="sidebutton">
-					<img
-						src="./../../assets/images/Lector_de_pantalla.png"
-						alt="Lector de pantalla"
-					/>
-				</button>
-				<button class="sidebutton">
-					<img
-						src="./../../assets/images/Teclado_virtual.png"
-						alt="Teclado virtual"
-					/>
-				</button>
-			</div>
+      <!-- Iconos de navegación -->
+      <div class="container-sidebutton">
+        <button class="sidebutton">
+          <img
+            src="./../../assets/images/Navegación_por_voz.png"
+            alt="Navegación por voz"
+          />
+        </button>
+        <button class="sidebutton">
+          <img
+            src="./../../assets/images/Navegación_teclado.png"
+            alt="Navegación por teclado"
+          />
+        </button>
+        <button class="sidebutton">
+          <img
+            src="./../../assets/images/Navegación_numerica.png"
+            alt="Navegación numérica"
+          />
+        </button>
+        <button class="sidebutton">
+          <img
+            src="./../../assets/images/Lector_de_pantalla.png"
+            alt="Lector de pantalla"
+          />
+        </button>
+        <button class="sidebutton">
+          <img
+            src="./../../assets/images/Teclado_virtual.png"
+            alt="Teclado virtual"
+          />
+        </button>
+      </div>
 
-			<!-- Asistente en la parte inferior -->
-			<div class="container-sidebutton" id="assistant">
-				<button class="sidebutton">
-					<img
-						id="assistant"
-						src="./../../assets/images/Asistente_ACCEX.png"
-						alt="Asistente ACCEX"
-					/>
-				</button>
-			</div>
-		</div>
-	</body>
+      <!-- Asistente en la parte inferior -->
+      <div class="container-sidebutton" id="assistant">
+        <button class="sidebutton" id="bot">
+          <img
+            id="assistant"
+            src="./../../assets/images/Asistente_ACCEX.png"
+            alt="Asistente ACCEX"
+          />
+        </button>
+      </div>
+    </div>
+    <script src="../scripts/sidebar.js"></script>
+  </body>
 </html>

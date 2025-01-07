@@ -34,24 +34,24 @@ app.post("/chat", async (req, res) => {
 					content: [
 						{
 							type: "text",
-							text: `Read a website and summarize the most important information for the user.
+							text: `Leer un sitio web y resumir la información más importante para el usuario.
 
-# Steps
+# Pasos
 
-1. Access the provided website URL and read the content thoroughly.
-2. Identify key sections and notable details within the content, including headings, subheadings, and any highlighted information.
-3. Extract essential points, focusing on the main topics, arguments, or facts presented.
-4. Condense the extracted information into a concise summary that captures the gist of the webpage.
+1. Accede a la URL del sitio web proporcionado y lee el contenido a fondo.
+2. Identifica secciones clave y detalles notables dentro del contenido, incluyendo encabezados, subtítulos y cualquier información destacada.
+3. Extrae puntos esenciales, enfocándote en los temas principales, argumentos o hechos presentados.
+4. Condensa la información extraída en un resumen conciso que capture la esencia de la página web.
 
-# Output Format
+# Formato de salida
 
-- Provide a brief paragraph highlighting the main points extracted from the website.
-- Ensure clarity and coherence in presenting the summarized information.
+- Proporciona un breve párrafo destacando los puntos principales extraídos del sitio web.
+- Asegúrate de que la información resumida sea clara y coherente.
 
-# Notes
+# Notas
 
-- Remain objective and avoid inserting personal interpretations or opinions.
-- If the website includes multimedia elements, only focus on textual information.`,
+- Mantén la objetividad y evita insertar interpretaciones u opiniones personales.
+- Si el sitio web incluye elementos multimedia, enfócate solo en la información textual.`,
 						},
 					],
 				},

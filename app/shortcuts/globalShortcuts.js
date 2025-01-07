@@ -1,165 +1,165 @@
-const { globalShortcut, ipcMain } = require('electron');
-const { getViews } = require('../manager/dashboard');
+const { globalShortcut, ipcMain } = require("electron");
+const { getViews } = require("../manager/dashboard");
 
 let accesibleMode = false;
 let shortcutsEnabled = true;
 
 function setGlobalShortcuts(mainWindow) {
   const { sidebarView, browserView, frameView } = getViews();
-  globalShortcut.register('CommandOrControl+I', () => {
+  globalShortcut.register("CommandOrControl+I", () => {
     mainWindow.close();
-    console.log('Closing app');
+    console.log("Closing app");
   });
-  globalShortcut.register('CommandOrControl+I', () => {
+  globalShortcut.register("CommandOrControl+I", () => {
     mainWindow.close();
-    console.log('Closing app');
+    console.log("Closing app");
   });
-  globalShortcut.register('Shift+Z+X', () => {
+  globalShortcut.register("Shift+Z+X", () => {
     if (shortcutsEnabled) {
       accesibleMode = !accesibleMode;
       if (accesibleMode) {
-        console.log('Activar modo accesible');
+        console.log("Activar modo accesible");
         setAccesibilityShortcuts(mainWindow);
       } else {
-        console.log('desactivar modo accesible');
+        console.log("desactivar modo accesible");
         deleteAccesibilityShortcuts();
       }
     }
   });
-  globalShortcut.register('C', () => {
+  globalShortcut.register("Shift+C", () => {
     //abrir ajustes
   });
 }
 
 function setAccesibilityShortcuts(mainWindow) {
   const { sidebarView, browserView, frameView } = getViews();
-  globalShortcut.register('R', () => {
-    console.log('Recargar browser');
+  globalShortcut.register("R", () => {
+    console.log("Recargar browser");
     browserView.webContents.reload();
   });
-  globalShortcut.register('Down', () => {
-    browserView.webContents.executeJavaScript('window.scrollBy(0, 100);');
+  globalShortcut.register("Down", () => {
+    browserView.webContents.executeJavaScript("window.scrollBy(0, 100);");
   });
-  globalShortcut.register('Up', () => {
-    browserView.webContents.executeJavaScript('window.scrollBy(0, -100);');
+  globalShortcut.register("Up", () => {
+    browserView.webContents.executeJavaScript("window.scrollBy(0, -100);");
   });
-  globalShortcut.register('L', () => {
-    console.log('Foco siguiente');
+  globalShortcut.register("L", () => {
+    console.log("Foco siguiente");
     browserView.webContents.executeJavaScript(`
       if (window.navigationManager) {
         window.navigationManager.focusNextElement();
       }
     `);
   });
-  globalShortcut.register('K', () => {
-    console.log('Foco anterior');
+  globalShortcut.register("K", () => {
+    console.log("Foco anterior");
     browserView.webContents.executeJavaScript(`
       if (window.navigationManager) {
         window.navigationManager.focusPreviousElement();
       }
     `);
   });
-  globalShortcut.register('Enter', () => {
-    console.log('Activar elemento');
+  globalShortcut.register("Enter", () => {
+    console.log("Activar elemento");
     browserView.webContents.executeJavaScript(`
       if (window.navigationManager) {
         window.navigationManager.activateElement();
       }
     `);
   });
-  globalShortcut.register('B', () => {
-    console.log('Página anterior');
+  globalShortcut.register("B", () => {
+    console.log("Página anterior");
     browserView.webContents.navigationHistory.goBack();
   });
-  globalShortcut.register('N', () => {
-    console.log('Página siguiente');
+  globalShortcut.register("N", () => {
+    console.log("Página siguiente");
     browserView.webContents.navigationHistory.goForward();
   });
-  globalShortcut.register('=', () => {
-    console.log('Zoom in');
+  globalShortcut.register("=", () => {
+    console.log("Zoom in");
     browserView.webContents.setZoomLevel(
       browserView.webContents.getZoomLevel() + 0.1
     );
   });
-  globalShortcut.register('-', () => {
-    console.log('Zoom out');
+  globalShortcut.register("-", () => {
+    console.log("Zoom out");
     browserView.webContents.setZoomLevel(
       browserView.webContents.getZoomLevel() - 0.1
     );
   });
-  globalShortcut.register('0', () => {
-    console.log('Zoom reset');
+  globalShortcut.register("0", () => {
+    console.log("Zoom reset");
     browserView.webContents.setZoomLevel(0);
   });
-  globalShortcut.register('1', () => {
-    console.log('Sitio favorito 1');
-    browserView.webContents.loadURL('https://www.google.com');
+  globalShortcut.register("1", () => {
+    console.log("Sitio favorito 1");
+    browserView.webContents.loadURL("https://www.google.com");
   });
-  globalShortcut.register('2', () => {
-    console.log('Sitio favorito 2');
-    browserView.webContents.loadURL('https://www.facebook.com');
+  globalShortcut.register("2", () => {
+    console.log("Sitio favorito 2");
+    browserView.webContents.loadURL("https://www.facebook.com");
   });
-  globalShortcut.register('3', () => {
-    console.log('Sitio favorito 3');
-    browserView.webContents.loadURL('https://www.twitter.com');
+  globalShortcut.register("3", () => {
+    console.log("Sitio favorito 3");
+    browserView.webContents.loadURL("https://www.twitter.com");
   });
-  globalShortcut.register('4', () => {
-    console.log('Sitio favorito 4');
-    browserView.webContents.loadURL('https://www.instagram.com');
+  globalShortcut.register("4", () => {
+    console.log("Sitio favorito 4");
+    browserView.webContents.loadURL("https://www.instagram.com");
   });
-  globalShortcut.register('5', () => {
-    console.log('Sitio favorito 5');
-    browserView.webContents.loadURL('https://www.linkedin.com');
+  globalShortcut.register("5", () => {
+    console.log("Sitio favorito 5");
+    browserView.webContents.loadURL("https://www.linkedin.com");
   });
-  globalShortcut.register('6', () => {
-    console.log('Sitio favorito 6');
-    browserView.webContents.loadURL('https://www.youtube.com');
+  globalShortcut.register("6", () => {
+    console.log("Sitio favorito 6");
+    browserView.webContents.loadURL("https://www.youtube.com");
   });
-  globalShortcut.register('7', () => {
-    console.log('Sitio favorito 7');
-    browserView.webContents.loadURL('XXXXXXXXXXXXXXXXXXXXXXXX');
+  globalShortcut.register("7", () => {
+    console.log("Sitio favorito 7");
+    browserView.webContents.loadURL("XXXXXXXXXXXXXXXXXXXXXXXX");
   });
-  globalShortcut.register('8', () => {
-    console.log('Sitio favorito 8');
-    browserView.webContents.loadURL('XXXXXXXXXXXXXXXXXXXXXXXX');
+  globalShortcut.register("8", () => {
+    console.log("Sitio favorito 8");
+    browserView.webContents.loadURL("XXXXXXXXXXXXXXXXXXXXXXXX");
   });
-  globalShortcut.register('9', () => {
-    console.log('Sitio favorito 9');
-    browserView.webContents.loadURL('XXXXXXXXXXXXXXXXXXXXXXXX');
+  globalShortcut.register("9", () => {
+    console.log("Sitio favorito 9");
+    browserView.webContents.loadURL("XXXXXXXXXXXXXXXXXXXXXXXX");
   });
-  globalShortcut.register('G', () => {
-    console.log('Ir al buscador de google');
-    browserView.webContents.loadURL('https://www.google.com');
+  globalShortcut.register("G", () => {
+    console.log("Ir al buscador de google");
+    browserView.webContents.loadURL("https://www.google.com");
   });
 
   removeListeners(browserView);
   injectListeners(browserView);
   injectNavButtons(browserView);
 
-  browserView.webContents.removeAllListeners('did-finish-load');
-  browserView.webContents.once('did-finish-load', () => {
+  browserView.webContents.removeAllListeners("did-finish-load");
+  browserView.webContents.once("did-finish-load", () => {
     removeListeners(browserView);
     injectListeners(browserView);
     injectNavButtons(browserView);
   });
-  browserView.webContents.removeAllListeners('did-navigate');
-  browserView.webContents.on('did-navigate', () => {
-    console.log('Navegación completa detectada. Re-inyectando lógica...');
+  browserView.webContents.removeAllListeners("did-navigate");
+  browserView.webContents.on("did-navigate", () => {
+    console.log("Navegación completa detectada. Re-inyectando lógica...");
     removeListeners(browserView);
     injectListeners(browserView);
     injectNavButtons(browserView);
   });
 
   console.log(
-    'Listeners actuales para did-finish-load:',
-    browserView.webContents.listenerCount('did-finish-load')
+    "Listeners actuales para did-finish-load:",
+    browserView.webContents.listenerCount("did-finish-load")
   );
 
   browserView.webContents.setMaxListeners(20);
 
-  browserView.webContents.on('did-navigate-in-page', () => {
+  browserView.webContents.on("did-navigate-in-page", () => {
     console.log(
-      'Navegación dentro de la página detectada (historial). Re-inyectando lógica...'
+      "Navegación dentro de la página detectada (historial). Re-inyectando lógica..."
     );
     removeListeners(browserView);
     injectListeners(browserView);
@@ -300,32 +300,32 @@ function removeListeners(browserView) {
 }
 
 function deleteAccesibilityShortcuts() {
-  globalShortcut.unregister('R');
-  globalShortcut.unregister('Down');
-  globalShortcut.unregister('Up');
-  globalShortcut.unregister('L');
-  globalShortcut.unregister('K');
-  globalShortcut.unregister('Enter');
-  globalShortcut.unregister('B');
-  globalShortcut.unregister('N');
+  globalShortcut.unregister("R");
+  globalShortcut.unregister("Down");
+  globalShortcut.unregister("Up");
+  globalShortcut.unregister("L");
+  globalShortcut.unregister("K");
+  globalShortcut.unregister("Enter");
+  globalShortcut.unregister("B");
+  globalShortcut.unregister("N");
 }
 
 function deleteShortcuts() {
   globalShortcut.unregisterAll();
 }
 
-ipcMain.on('disable-shortcuts', () => {
+ipcMain.on("disable-shortcuts", () => {
   shortcutsEnabled = false;
   deleteAccesibilityShortcuts();
-  console.log('Shortcuts deshabilitados temporalmente');
+  console.log("Shortcuts deshabilitados temporalmente");
 });
 
-ipcMain.on('enable-shortcuts', () => {
+ipcMain.on("enable-shortcuts", () => {
   shortcutsEnabled = true;
   if (accesibleMode) {
     setAccesibilityShortcuts();
   }
-  console.log('Shortcuts habilitados nuevamente');
+  console.log("Shortcuts habilitados nuevamente");
 });
 
 module.exports = {
