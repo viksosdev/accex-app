@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajustes de Accesibilidad</title>
+  <link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+  <!-- Contenedor principal -->
+  <div class="main-container">
+    <!-- Cabecera -->
+    <header class="header">
+      <div class="header-left">
+        <img src="logo.png" alt="Logo Accex" class="logo">
+        <h1 class="header-title">Ajustes de Accesibilidad</h1>
+      </div>
+      <button class="back-button" aria-label="Regresar">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="back-icon">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="settings-container">
+      <div class="settings-header">
+        <h2 class="settings-title">Personaliza las diferentes herramientas a tu gusto.</h2>
+      </div>
+
+      <!-- Opciones de ajustes -->
+      <section class="options-container">
+        <div class="option-card">
+          <div class="option-icon">
+            <img src="voice-icon.svg" alt="Icono de Navegación por Voz">
+          </div>
+          <p class="option-text">Navegación por voz</p>
+        </div>
+
+        <div class="option-card">
+          <div class="option-icon">
+            <img src="keyboard-icon.svg" alt="Icono de Navegación por Teclado">
+          </div>
+          <p class="option-text">Navegación por teclado</p>
+        </div>
+
+        <div class="option-card">
+          <div class="option-icon">
+            <img src="numeric-icon.svg" alt="Icono de Navegación Numérica">
+          </div>
+          <p class="option-text">Navegación numérica</p>
+        </div>
+
+        <div class="option-card">
+          <div class="option-icon">
+            <img src="screen-reader-icon.svg" alt="Icono de Lector de Pantalla">
+          </div>
+          <p class="option-text">Lector de pantalla</p>
+        </div>
+
+        <div class="option-card">
+          <div class="option-icon">
+            <img src="virtual-keyboard-icon.svg" alt="Icono de Teclado Virtual">
+          </div>
+          <p class="option-text">Teclado virtual</p>
+        </div>
+      </section>
+
+      <!-- Botón de Personalizar -->
+      <button class="customize-button">Personalizar</button>
+    </main>
+  </div>
+</body>
+</html>
