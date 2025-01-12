@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil del Usuario</title>
+    <link rel="stylesheet" href="../styles/user.css" />
+  </head>
+  <body>
+    <!-- Contenedor principal de la página -->
+    <div class="main-container">
+      <!-- Cabecera -->
+      <header class="header">
+        <div class="header-content">
+          <!-- Logo -->
+          <img src="logo.png" alt="Logo Accex" class="logo" />
+          <!-- Título -->
+          <h1 class="header-title">Perfil del usuario</h1>
+        </div>
+        <!-- Botón de retroceso -->
+        <button class="back-button" aria-label="Regresar">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="back-icon"
+          >
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+          </svg>
+        </button>
+      </header>
+
+      <!-- Contenedor del perfil -->
+      <main class="profile-container">
+        <!-- Información del perfil -->
+        <section class="profile-header">
+          <!-- Foto del usuario -->
+          <div class="profile-photo-container">
+            <img
+              src="profile-photo.jpg"
+              alt="Foto de perfil de Benjamín Gallardo"
+              class="profile-photo"
+            />
+          </div>
+          <!-- Datos del usuario -->
+          <div class="profile-info">
+            <h2 class="profile-name">Benjamín Gallardo</h2>
+            <div class="profile-details">
+              <!-- Icono de discapacidad -->
+              <span class="disability-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  class="icon"
+                >
+                  <path
+                    d="M12 4.5c-4.05 0-7.41 2.72-9 6.5 1.59 3.78 4.95 6.5 9 6.5s7.41-2.72 9-6.5c-1.59-3.78-4.95-6.5-9-6.5zm0 12c-3.31 0-6.24-2.24-7.5-5.5 1.26-3.26 4.19-5.5 7.5-5.5s6.24 2.24 7.5 5.5c-1.26 3.26-4.19 5.5-7.5 5.5zm-2-5h4v2h-4z"
+                  ></path>
+                </svg>
+              </span>
+              <span class="disability-text">Discapacidad Visual</span>
+            </div>
+          </div>
+          <!-- Botón para personalizar -->
+          <button class="customize-button">Personalizar</button>
+        </section>
+
+        <!-- Formulario de datos del perfil -->
+        <section class="profile-form">
+          <!-- Campo: Nombre completo -->
+          <div class="form-group">
+            <label for="nombre" class="form-label">Nombre completo</label>
+            <input
+              type="text"
+              id="nombre"
+              class="form-input"
+              placeholder="Escribe tu nombre completo"
+            />
+          </div>
+
+          <!-- Opciones de discapacidad -->
+          <div class="form-group dual">
+            <div>
+              <label class="form-label">¿Qué discapacidad tiene usted?</label>
+              <div class="radio-group">
+                <label>
+                  <input type="radio" name="discapacidad" value="motriz" />
+                  Discapacidad Motriz
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="discapacidad"
+                    value="visual"
+                    checked
+                  />
+                  Discapacidad Visual
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Campo: Cambiar correo -->
+          <div class="form-group">
+            <label for="correo" class="form-label">Cambiar Correo</label>
+            <input
+              type="email"
+              id="correo"
+              class="form-input"
+              placeholder="Escribe tu nuevo correo"
+            />
+          </div>
+
+          <!-- Campo: Cambiar contraseña -->
+          <div class="form-group">
+            <label for="password" class="form-label">Cambiar Contraseña</label>
+            <input
+              type="password"
+              id="password"
+              class="form-input"
+              placeholder="Escribe tu nueva contraseña"
+            />
+          </div>
+
+          <!-- Botones de acciones -->
+          <div class="form-actions">
+            <button type="button" class="secondary-button">
+              Cerrar Sesión
+            </button>
+            <button type="submit" class="primary-button">Guardar</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../scripts/main.js"></script>
+  </body>
+</html>

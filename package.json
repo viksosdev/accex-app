@@ -4,19 +4,30 @@
   "description": "",
   "main": "./app/main/main.js",
   "scripts": {
-    "start": "electron --trace-warnings .",
-    "dev": "nodemon --exec electron ."
+    "start": "electron-forge start",
+    "dev": "nodemon --exec electron .",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@electron-forge/cli": "^7.6.0",
+    "@electron-forge/maker-deb": "^7.6.0",
+    "@electron-forge/maker-rpm": "^7.6.0",
+    "@electron-forge/maker-squirrel": "^7.6.0",
+    "@electron-forge/maker-zip": "^7.6.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.6.0",
+    "@electron-forge/plugin-fuses": "^7.6.0",
+    "@electron/fuses": "^1.8.0",
     "electron": "^33.0.1",
     "nodemon": "^3.1.7"
   },
   "dependencies": {
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
+    "electron-squirrel-startup": "^1.0.1",
     "express": "^4.21.2",
     "openai": "^4.76.1"
   }

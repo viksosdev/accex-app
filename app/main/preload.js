@@ -33,9 +33,9 @@ contextBridge.exposeInMainWorld("appNavigate", {
 
 contextBridge.exposeInMainWorld("navigateAPI", {
   to: (data) => {
-    console.log("navigateAPI.to", data);
     ipcRenderer.send("browser-navigate", data);
   },
+  getCurrentUrl: () => ipcRenderer.invoke("get-current-url"),
 });
 
 contextBridge.exposeInMainWorld("toggleNumpadShortcuts", {

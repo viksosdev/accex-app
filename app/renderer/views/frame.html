@@ -1,157 +1,172 @@
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Barra de Navegación</title>
-		<style>
-			/* General de la página */
-			body {
-				font-family: Arial, sans-serif;
-				margin: 0;
-				display: flex;
-				flex-direction: column;
-				background-color: white;
-			}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Barra de Navegación</title>
+    <style>
+      /* General de la página */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+      }
 
-			/* Estilo de la barra de navegación principal */
-			.navbar {
-				display: flex;
-				align-items: center;
-				background-color: white;
-				padding: 8px 16px;
-				gap: 10px;
-				height: 25px;
-			}
+      /* Estilo de la barra de navegación principal */
+      .navbar {
+        display: flex;
+        align-items: center;
+        background-color: white;
+        padding: 8px 16px;
+        gap: 10px;
+        height: 25px;
+      }
 
-			/* Estilo del logo */
-			.navbar img {
-				height: 20px;
-			}
+      /* Estilo del logo */
+      .navbar img {
+        height: 20px;
+      }
 
-			/* Botones de navegación (flechas) */
-			.nav-button {
-				background: none;
-				border: none;
-				cursor: pointer;
-				padding: 5px;
-			}
+      /* Botones de navegación (flechas) */
+      .nav-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+      }
 
-			/* Iconos de navegación (atrás y adelante) */
-			.nav-button svg {
-				fill: #0d47a1;
-				width: 20px;
-				height: 20px;
-			}
+      /* Iconos de navegación (atrás y adelante) */
+      .nav-button svg {
+        fill: #0d47a1;
+        width: 20px;
+        height: 20px;
+      }
 
-			/* Contenedor de la barra de búsqueda */
-			.search-container {
-				display: flex;
-				align-items: center;
-				background-color: #cbe6fc;
-				padding: 5px 10px;
-				flex: 1;
-				border-radius: 18px;
-			}
+      .search-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+      }
 
-			.search-icon {
-				margin-right: 8px;
-				fill: #0d47a1;
-				width: 16px;
-				height: 16px;
-			}
+      .search-button svg {
+        fill: #0d47a1;
+        width: 16px;
+        height: 16px;
+      }
 
-			.search-bar {
-				border: none;
-				background: transparent;
-				outline: none;
-				font-size: 14px;
-				color: #0d47a1;
-				width: 100%;
-			}
+      /* Contenedor de la barra de búsqueda */
+      .search-container {
+        display: flex;
+        align-items: center;
+        background-color: #cbe6fc;
+        padding: 5px 10px;
+        flex: 1;
+        border-radius: 18px;
+      }
 
-			/* Contenedor de la sección inferior de favoritos */
-			.favorites-container {
-				display: flex;
-				align-items: center;
-				background-color: #dcedfe;
-				padding: 8px 16px;
-				gap: 10px;
-			}
+      .search-icon {
+        margin-right: 8px;
+        fill: #0d47a1;
+        width: 16px;
+        height: 16px;
+      }
 
-			/* Botones de favoritos (Google y Facebook) */
-			.favorite-button {
-				color: #0d47a1;
-				font-weight: bold;
-				cursor: pointer;
-				background: none;
-				border: none;
-				font-size: 14px;
-			}
-		</style>
-	</head>
-	<body>
-		<!-- Barra de navegación superior -->
-		<div class="navbar">
-			<!-- Logo -->
-			<img src="../../assets/icons/ic_accex.png" alt="Logo Accex" />
+      .search-bar {
+        border: none;
+        background: transparent;
+        outline: none;
+        font-size: 14px;
+        color: #0d47a1;
+        width: 100%;
+      }
 
-			<!-- Botón de flecha hacia atrás -->
-			<button id="back" class="nav-button">
-				<svg
-					width="19"
-					height="19"
-					viewBox="0 0 19 19"
-					fill="none"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path
-						d="M9.5634 19.6393C9.77528 19.4215 9.88623 19.1443 9.89624 18.8076C9.90549 18.471 9.80417 18.1938 9.5923 17.976L3.92938 12.1542H16.8443C17.1717 12.1542 17.4464 12.0401 17.6683 11.812C17.8894 11.5847 18 11.3027 18 10.9661C18 10.6294 17.8894 10.3471 17.6683 10.1189C17.4464 9.89161 17.1717 9.77795 16.8443 9.77795H3.92938L9.5923 3.95616C9.80417 3.73834 9.90549 3.46111 9.89624 3.12448C9.88623 2.78785 9.77528 2.51062 9.5634 2.2928C9.35153 2.07497 9.08186 1.96606 8.75441 1.96606C8.42697 1.96606 8.1573 2.07497 7.94543 2.2928L0.31782 10.1344C0.20225 10.2334 0.120193 10.357 0.0716534 10.5051C0.0238838 10.654 0 10.8076 0 10.9661C0 11.1245 0.0238838 11.273 0.0716534 11.4116C0.120193 11.5502 0.20225 11.6789 0.31782 11.7977L7.94543 19.6393C8.1573 19.8572 8.42697 19.9661 8.75441 19.9661C9.08186 19.9661 9.35153 19.8572 9.5634 19.6393Z"
-						fill="black"
-						fill-opacity="0.87"
-					/>
-				</svg>
-			</button>
+      /* Contenedor de la sección inferior de favoritos */
+      .favorites-container {
+        display: flex;
+        align-items: center;
+        background-color: #dcedfe;
+        padding: 8px 16px;
+        gap: 10px;
+      }
 
-			<!-- Botón de flecha hacia adelante -->
-			<button id="forward" class="nav-button">
-				<svg
-					width="19"
-					height="19"
-					viewBox="0 0 19 19"
-					fill="none"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path
-						d="M9.4366 19.6393C9.22472 19.4215 9.11377 19.1443 9.10376 18.8076C9.09451 18.471 9.19583 18.1938 9.4077 17.976L15.0706 12.1542H2.1557C1.82825 12.1542 1.55358 12.0401 1.33169 11.812C1.11056 11.5847 1 11.3027 1 10.9661C1 10.6294 1.11056 10.3471 1.33169 10.1189C1.55358 9.89161 1.82825 9.77795 2.1557 9.77795H15.0706L9.4077 3.95616C9.19583 3.73834 9.09451 3.46111 9.10376 3.12448C9.11377 2.78785 9.22472 2.51062 9.4366 2.2928C9.64847 2.07497 9.91814 1.96606 10.2456 1.96606C10.573 1.96606 10.8427 2.07497 11.0546 2.2928L18.6822 10.1344C18.7978 10.2334 18.8798 10.357 18.9283 10.5051C18.9761 10.654 19 10.8076 19 10.9661C19 11.1245 18.9761 11.273 18.9283 11.4116C18.8798 11.5502 18.7978 11.6789 18.6822 11.7977L11.0546 19.6393C10.8427 19.8572 10.573 19.9661 10.2456 19.9661C9.91814 19.9661 9.64847 19.8572 9.4366 19.6393Z"
-						fill="black"
-						fill-opacity="0.87"
-					/>
-				</svg>
-			</button>
+      /* Botones de favoritos (Google y Facebook) */
+      .favorite-button {
+        color: #0d47a1;
+        font-weight: bold;
+        cursor: pointer;
+        background: none;
+        border: none;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Barra de navegación superior -->
+    <div class="navbar">
+      <!-- Logo -->
+      <img src="../../assets/icons/ic_accex.png" alt="Logo Accex" />
 
-			<!-- Barra de búsqueda -->
-			<div class="search-container">
-				<svg class="search-icon" viewBox="0 0 24 24">
-					<path
-						d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 5 1.5-1.5-5-5zM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
-					/>
-				</svg>
-				<input
-					type="text"
-					id="search-bar"
-					class="search-bar"
-					placeholder="Escribe tu consulta..."
-				/>
-			</div>
-		</div>
+      <!-- Botón de flecha hacia atrás -->
+      <button id="back" class="nav-button">
+        <svg
+          width="19"
+          height="19"
+          viewBox="0 0 19 19"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.5634 19.6393C9.77528 19.4215 9.88623 19.1443 9.89624 18.8076C9.90549 18.471 9.80417 18.1938 9.5923 17.976L3.92938 12.1542H16.8443C17.1717 12.1542 17.4464 12.0401 17.6683 11.812C17.8894 11.5847 18 11.3027 18 10.9661C18 10.6294 17.8894 10.3471 17.6683 10.1189C17.4464 9.89161 17.1717 9.77795 16.8443 9.77795H3.92938L9.5923 3.95616C9.80417 3.73834 9.90549 3.46111 9.89624 3.12448C9.88623 2.78785 9.77528 2.51062 9.5634 2.2928C9.35153 2.07497 9.08186 1.96606 8.75441 1.96606C8.42697 1.96606 8.1573 2.07497 7.94543 2.2928L0.31782 10.1344C0.20225 10.2334 0.120193 10.357 0.0716534 10.5051C0.0238838 10.654 0 10.8076 0 10.9661C0 11.1245 0.0238838 11.273 0.0716534 11.4116C0.120193 11.5502 0.20225 11.6789 0.31782 11.7977L7.94543 19.6393C8.1573 19.8572 8.42697 19.9661 8.75441 19.9661C9.08186 19.9661 9.35153 19.8572 9.5634 19.6393Z"
+            fill="black"
+            fill-opacity="0.87"
+          />
+        </svg>
+      </button>
 
-		<!-- Barra inferior de favoritos -->
-		<div class="favorites-container">
-			<button id="google" class="favorite-button">Google</button>
-			<button id="facebook" class="favorite-button">Facebook</button>
-		</div>
+      <!-- Botón de flecha hacia adelante -->
+      <button id="forward" class="nav-button">
+        <svg
+          width="19"
+          height="19"
+          viewBox="0 0 19 19"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.4366 19.6393C9.22472 19.4215 9.11377 19.1443 9.10376 18.8076C9.09451 18.471 9.19583 18.1938 9.4077 17.976L15.0706 12.1542H2.1557C1.82825 12.1542 1.55358 12.0401 1.33169 11.812C1.11056 11.5847 1 11.3027 1 10.9661C1 10.6294 1.11056 10.3471 1.33169 10.1189C1.55358 9.89161 1.82825 9.77795 2.1557 9.77795H15.0706L9.4077 3.95616C9.19583 3.73834 9.09451 3.46111 9.10376 3.12448C9.11377 2.78785 9.22472 2.51062 9.4366 2.2928C9.64847 2.07497 9.91814 1.96606 10.2456 1.96606C10.573 1.96606 10.8427 2.07497 11.0546 2.2928L18.6822 10.1344C18.7978 10.2334 18.8798 10.357 18.9283 10.5051C18.9761 10.654 19 10.8076 19 10.9661C19 11.1245 18.9761 11.273 18.9283 11.4116C18.8798 11.5502 18.7978 11.6789 18.6822 11.7977L11.0546 19.6393C10.8427 19.8572 10.573 19.9661 10.2456 19.9661C9.91814 19.9661 9.64847 19.8572 9.4366 19.6393Z"
+            fill="black"
+            fill-opacity="0.87"
+          />
+        </svg>
+      </button>
 
-		<script src="../scripts/frame.js"></script>
-	</body>
+      <!-- Barra de búsqueda -->
+      <div class="search-container">
+        <button id="search-button" class="search-button">
+          <svg class="search-icon" viewBox="0 0 24 24">
+            <path
+              d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 5 1.5-1.5-5-5zM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+            />
+          </svg>
+        </button>
+        <input
+          type="text"
+          id="search-bar"
+          class="search-bar"
+          placeholder="Busca en Google o ingresa un sitio web"
+        />
+      </div>
+    </div>
+
+    <!-- Barra inferior de favoritos -->
+    <div class="favorites-container">
+      <button id="google" class="favorite-button">Google</button>
+      <button id="facebook" class="favorite-button">Facebook</button>
+    </div>
+
+    <script src="../scripts/frame.js"></script>
+  </body>
 </html>
