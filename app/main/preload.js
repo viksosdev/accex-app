@@ -1,26 +1,45 @@
-const { contextBridge, ipcRenderer } = require('electron');
+const { contextBridge, ipcRenderer } = require("electron");
 
-contextBridge.exposeInMainWorld('electronAPI', {
+contextBridge.exposeInMainWorld("electronAPI", {
+  toggleNavigation: () => {
+    ipcRenderer.send("toggle-navigation");
+  },
+  onNavigationStateChange: (callback) => {
+    ipcRenderer.on("navigation-state-change", callback);
+  },
   send: (channel, data) => {
     ipcRenderer.send(channel, data);
   },
 });
 
-contextBridge.exposeInMainWorld('OpenAIApi', {
+contextBridge.exposeInMainWorld("OpenAIApi", {
   query: (data) => {
-    ipcRenderer.send('openai-query', data);
+    ipcRenderer.send("openai-query", data);
   },
 });
 
-contextBridge.exposeInMainWorld('appNavigate', {
+contextBridge.exposeInMainWorld("appNavigate", {
   go: (data) => {
-    if (data === 'load-register-page') ipcRenderer.send('load-register');
-    if (data === 'load-dashboard-page') ipcRenderer.send('load-dashboard');
+    if (data === "load-register-page") ipcRenderer.send("load-register");
+    if (data === "load-dashboard-page") ipcRenderer.send("load-dashboard");
+  },
+  foward: () => {
+    ipcRenderer.send("browser-forward");
+  },
+  back: () => {
+    ipcRenderer.send("browser-back");
   },
 });
 
-contextBridge.exposeInMainWorld('navigateAPI', {
+contextBridge.exposeInMainWorld("navigateAPI", {
   to: (data) => {
-    ipcRenderer.send('browser-navigate', data);
+    console.log("navigateAPI.to", data);
+    ipcRenderer.send("browser-navigate", data);
+  },
+});
+
+contextBridge.exposeInMainWorld("toggleNumpadShortcuts", {
+  toggle: () => {
+    ipcRenderer.send("toggle-numpad-shortcuts");
   },
 });

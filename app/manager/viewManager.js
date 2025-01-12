@@ -1,8 +1,17 @@
-function adjustView(mainWindow, sidebarView, browserView, frameView) {
+function adjustView(
+  mainWindow,
+  sidebarView,
+  browserView,
+  frameView,
+  botView,
+  botHeight,
+  botWidth
+) {
   const { width, height } = mainWindow.getBounds();
 
   const sidebarWidth = 75;
   const frameHeight = 75;
+  const botX = 90;
 
   sidebarView.setBounds({
     x: 0,
@@ -23,6 +32,13 @@ function adjustView(mainWindow, sidebarView, browserView, frameView) {
     y: 0,
     width: width,
     height: frameHeight,
+  });
+
+  botView.setBounds({
+    x: botX,
+    y: height - 480,
+    width: botWidth,
+    height: botHeight,
   });
 }
 

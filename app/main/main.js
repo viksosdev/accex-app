@@ -1,5 +1,11 @@
 const path = require('path');
-const { app, BaseWindow, WebContentsView, nativeImage } = require('electron');
+const {
+  app,
+  BaseWindow,
+  WebContentsView,
+  nativeImage,
+  ipcMain,
+} = require('electron');
 const {
   setGlobalShortcuts,
   deleteShortcuts,
@@ -135,14 +141,15 @@ app.whenReady().then(() => {
       createDashboardView(mainWindow);
     }
   });
-});
 
-app.on('focus', () => {
-  setGlobalShortcuts(mainWindow);
-});
+  mainWindow.on('focus', () => {
+    setGlobalShortcuts(mainWindow);
+    console.log('App focused');
+  });
 
-app.on('blur', () => {
-  deleteShortcuts();
+  mainWindow.on('blur', () => {
+    deleteShortcuts();
+  });
 });
 
 app.on('window-all-closed', () => {
