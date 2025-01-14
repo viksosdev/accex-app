@@ -10,30 +10,38 @@ const ipcManager = {
     });
 
     ipcMain.on("load-dashboard", () => {
-      if (resizeMainWindow) {
-        resizeMainWindow(1280, 720); 
+      if (resizeMainWindow && mainWindow && !mainWindow.isDestroyed()) {
+        resizeMainWindow(1280, 720, true); 
+        createDashboardView(mainWindow); // Cargar el dashboard solo al recibir el evento
       } else {
-        console.error("resizeMainWindow no está definido");
+        console.error("resizeMainWindow o mainWindow no está definido");
       }
-      createDashboardView(mainWindow);
     });
 
     ipcMain.on("load-register", () => {
-      if (resizeMainWindow) {
-        resizeMainWindow(1280, 720); 
+      if (resizeMainWindow && mainWindow && !mainWindow.isDestroyed()) {
+        resizeMainWindow(1280, 720);
+        createRegisterView(mainWindow);
       } else {
-        console.error("resizeMainWindow no está definido");
+        console.error("resizeMainWindow o mainWindow no está definido");
       }
-      createRegisterView(mainWindow);
     });
 
     ipcMain.on("load-registerConfig", () => {
-      if (resizeMainWindow) {
-        resizeMainWindow(1280, 720); 
+      if (resizeMainWindow && mainWindow && !mainWindow.isDestroyed()) {
+        resizeMainWindow(1280, 720);
+        createRegisterConfigView(mainWindow);
       } else {
-        console.error("resizeMainWindow no está definido");
+        console.error("resizeMainWindow o mainWindow no está definido");
       }
-      createRegisterConfigView(mainWindow);
+    });
+
+    ipcMain.on("toggle-frame", (event, frameEnabled) => {
+      if (resizeMainWindow && mainWindow && !mainWindow.isDestroyed()) {
+        resizeMainWindow(mainWindow.getBounds().width, mainWindow.getBounds().height, frameEnabled);
+      } else {
+        console.error("resizeMainWindow o mainWindow no está definido");
+      }
     });
   },
 };
