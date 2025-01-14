@@ -16,6 +16,7 @@ function createDashboardView(mainWindow) {
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,
+      frame: true,
       preload: path.join(__dirname, "..", "main", "preload.js"),
     },
   });
