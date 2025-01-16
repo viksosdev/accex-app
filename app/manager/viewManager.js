@@ -7,8 +7,8 @@ function adjustView(
   botHeight,
   botWidth
 ) {
-  const { width, height } = mainWindow.getBounds();
-
+  const width = 1280;
+  const height = 720;
   const sidebarWidth = 75;
   const frameHeight = 75;
   const botX = 90;

@@ -42,13 +42,16 @@
             displayMessage(data.response, "bot");
           } else {
             displayMessage(
-              "Error al procesar la solicitud. Inténtalo de nuevo.",
+              "Error al procesar tu mensaje. Por favor, vuelve a preguntarme.",
               "bot"
             );
           }
         } catch (error) {
           console.error("Error:", error);
-          displayMessage("No se pudo conectar con el servidor.", "bot");
+          displayMessage(
+            "Actualmente no me encuentro en linea, intenta escribirme en otro momento",
+            "bot"
+          );
         }
       }
 
@@ -65,7 +68,7 @@
         if (message) {
           displayMessage(message, "user");
           sendMessage(message);
-          inputField.value = "";
+          inputField.value = null;
         }
       });
 
@@ -81,9 +84,20 @@
         window.electronAPI.send("close-bot");
       });
 
+      inputField.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          const message = inputField.value.trim();
+          if (message) {
+            displayMessage(message, "user");
+            sendMessage(message);
+            inputField.value = "";
+          }
+        }
+      });
+
       window.onload = () => {
         displayMessage(
-          "Soy un chatbot especializado en analizar sitios web y resumir información clave. Introduce una URL o pregunta.",
+          "Soy Accex, un chatbot especializado en analizar sitios web y resumir información clave. Introduce una URL o pregunta.",
           "bot"
         );
       };
