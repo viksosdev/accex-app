@@ -36,6 +36,9 @@
   "build": {
     "appId": "cl.alphanex.accex",
     "productName": "Accex App",
+    "files": [
+      "app/**/*"
+    ],
     "win": {
       "target": "nsis",
       "icon": "app/assets/icons/icon.ico"
