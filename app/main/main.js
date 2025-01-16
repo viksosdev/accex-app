@@ -1,24 +1,35 @@
-const path = require("path");
+const path = require('path');
 const {
   app,
   BaseWindow,
   WebContentsView,
   nativeImage,
   ipcMain,
-} = require("electron");
+} = require('electron');
 const {
   setGlobalShortcuts,
   deleteShortcuts,
-} = require("../shortcuts/globalShortcuts");
-const ipcManager = require("../manager/ipcManager");
-const { createDashboardView } = require("../manager/dashboard");
+} = require('../shortcuts/globalShortcuts');
+const ipcManager = require('../manager/ipcManager');
+const { createDashboardView } = require('../manager/dashboard');
 
 let mainWindow;
 
 const appIcon = nativeImage.createFromPath(
-  path.join(__dirname, "..", "assets", "images", "Asistente_ACCEX.png", "icons", "qr.png")
+  path.join(
+    __dirname,
+    '..',
+    'assets',
+    'images',
+    'Asistente_ACCEX.png',
+    'icons',
+    'qr.png'
+  )
 );
-app.dock.setIcon(appIcon);
+
+if (process.platform === 'darwin') {
+  app.dock.setIcon(appIcon);
+}
 
 /**
  * ==================================================
@@ -34,17 +45,13 @@ function createAppWindow() {
     frame: true,
     icon: appIcon,
     webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
+      preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
       enableRemoteModule: false,
       nodeIntegration: false,
       webSecurity: true,
     },
   });
-
-  mainWindow.setIcon(
-    nativeImage.createFromPath("./assets/images/Asistente_ACCEX.png")
-  );
 }
 
 /**
@@ -56,10 +63,10 @@ function createSecondaryWindow() {
   let secondaryWindow = new BaseWindow({
     width: 800,
     height: 600,
-    title: "Ventana Secundaria",
+    title: 'Ventana Secundaria',
     icon: appIcon,
     webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
+      preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
       enableRemoteModule: false,
       nodeIntegration: false,
@@ -68,10 +75,10 @@ function createSecondaryWindow() {
   });
 
   secondaryWindow.loadFile(
-    path.join(__dirname, "..", "renderer", "views", "secondary.html")
+    path.join(__dirname, '..', 'renderer', 'views', 'secondary.html')
   );
 
-  secondaryWindow.on("closed", () => {
+  secondaryWindow.on('closed', () => {
     secondaryWindow = null;
   });
 }
@@ -86,7 +93,7 @@ function resizeMainWindow(width, height) {
     mainWindow.setSize(width, height);
     mainWindow.center(); // Centrar la ventana después de cambiar el tamaño
   } else {
-    console.error("mainWindow no está definido");
+    console.error('mainWindow no está definido');
   }
 }
 
@@ -103,7 +110,7 @@ function startApp() {
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,
-      preload: path.join(__dirname, "preload.js"),
+      preload: path.join(__dirname, 'preload.js'),
     },
   });
   mainWindow.contentView.addChildView(mainView);
@@ -116,7 +123,7 @@ function startApp() {
   });
 
   mainView.webContents.loadFile(
-    path.join(__dirname, "..", "renderer", "views", "index.html")
+    path.join(__dirname, '..', 'renderer', 'views', 'index.html')
   );
 
   // Inicializas tu manager
@@ -132,7 +139,7 @@ app.whenReady().then(() => {
   startApp();
 
   // Al hacer click en el Dock (en macOS) si no hay ventanas, crea la principal
-  app.on("activate", () => {
+  app.on('activate', () => {
     if (BaseWindow.getAllWindows().length === 0) {
       createAppWindow();
       createDashboardView(mainWindow);
@@ -140,23 +147,23 @@ app.whenReady().then(() => {
   });
 
   // Manejo de atajos globales según el foco
-  mainWindow.on("focus", () => {
+  mainWindow.on('focus', () => {
     setGlobalShortcuts(mainWindow);
-    console.log("App focused");
+    console.log('App focused');
   });
 
-  mainWindow.on("blur", () => {
+  mainWindow.on('blur', () => {
     deleteShortcuts();
   });
 });
 
-app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
     app.quit();
   }
 });
 
-app.on("will-quit", () => {
+app.on('will-quit', () => {
   deleteShortcuts();
 });
 
@@ -165,7 +172,7 @@ app.on("will-quit", () => {
  *   6. IPC PARA ABRIR LA VENTANA SECUNDARIA
  * ==================================================
  */
-ipcMain.on("open-new-window", () => {
+ipcMain.on('open-new-window', () => {
   createSecondaryWindow();
 });
 
