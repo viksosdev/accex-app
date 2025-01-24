@@ -12,8 +12,47 @@ const {
 } = require("../shortcuts/globalShortcuts");
 const ipcManager = require("../manager/ipcManager");
 const { createDashboardView } = require("../manager/dashboard");
+const fs = require("fs");
 
 let mainWindow;
+let config = null;
+
+function getDocumentsPath() {
+  if (process.platform === "darwin") {
+    return path.join(app.getPath("home"), "Documents");
+  } else if (process.platform === "win32") {
+    return path.join(app.getPath("userData"), "Documents");
+  }
+
+  return app.getPath("home");
+}
+
+const configPath = path.join(getDocumentsPath(), "config.json");
+
+async function createDefaultConfig() {
+  const defaultConfig = {
+    language: "es",
+    apiURL: "http://localhost:3000",
+  };
+
+  if (!fs.existsSync(configPath)) {
+    await fs.writeFileSync(
+      configPath,
+      JSON.stringify(defaultConfig, null, 2),
+      "utf-8"
+    );
+    console.log("Archivo de configuración creado");
+  }
+}
+
+async function loadConfig() {
+  try {
+    const configData = await fs.readFileSync(configPath, "utf8");
+    config = JSON.parse(configData);
+  } catch (error) {
+    console.error("Error al leer el archivo de configuración", error);
+  }
+}
 
 const appIcon = nativeImage.createFromPath(
   path.join(
@@ -134,7 +173,15 @@ function startApp() {
  *   5. EVENTOS DE LA APLICACIÓN
  * ==================================================
  */
-app.whenReady().then(() => {
+
+async function initializeApp() {
+  await createDefaultConfig();
+  await loadConfig();
+  ipcMain.handle("get-config", () => config);
+}
+
+app.whenReady().then(async () => {
+  await initializeApp();
   startApp();
 
   // Al hacer click en el Dock (en macOS) si no hay ventanas, crea la principal

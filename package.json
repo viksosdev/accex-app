@@ -37,7 +37,8 @@
     "appId": "cl.alphanex.accex",
     "productName": "Accex App",
     "files": [
-      "app/**/*"
+      "app/**/*",
+      "config.json"
     ],
     "win": {
       "target": "nsis",

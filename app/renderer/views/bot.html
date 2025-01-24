@@ -26,10 +26,40 @@
       const inputField = document.querySelector(".chatbot-input textarea");
       const sendButton = document.getElementById("send-btn");
       const closeBtn = document.querySelector(".chatbot-header button");
+      let apiURL = null;
+
+      async function initializeApp() {
+        try {
+          const config = await window.electronAPI.getConfig();
+
+          if (config && config.apiURL) {
+            apiURL = config.apiURL;
+          } else {
+            console.error("No se pudo obtener la configuración de la API");
+            displayMessage(
+              "No se pudo obtener la configuración de la API. Por favor, intenta de nuevo más tarde.",
+              "bot"
+            );
+          }
+        } catch (error) {
+          console.error("Error al obtener la configuración de la API:", error);
+          displayMessage(
+            "No se pudo obtener la configuración de la API. Por favor, intenta de nuevo más tarde.",
+            "bot"
+          );
+        }
+      }
 
       async function sendMessage(message) {
+        if (!apiURL) {
+          displayMessage(
+            "No se pudo obtener la configuración de la API. Por favor, intenta de nuevo más tarde.",
+            "bot"
+          );
+          return;
+        }
         try {
-          const response = await fetch("http://localhost:3000/chat", {
+          const response = await fetch(`${apiURL}/chat`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -101,6 +131,7 @@
           "bot"
         );
       };
+      initializeApp();
     </script>
   </body>
 </html>

@@ -10,6 +10,7 @@ contextBridge.exposeInMainWorld("electronAPI", {
   send: (channel, data) => {
     ipcRenderer.send(channel, data);
   },
+  getConfig: () => ipcRenderer.invoke("get-config"),
 });
 
 contextBridge.exposeInMainWorld("OpenAIApi", {
@@ -21,10 +22,9 @@ contextBridge.exposeInMainWorld("OpenAIApi", {
 contextBridge.exposeInMainWorld("appNavigate", {
   go: (data) => {
     if (data === "load-register-page") ipcRenderer.send("load-register");
-    if (data === "load-registerConfig-page") ipcRenderer.send("load-registerConfig");
+    if (data === "load-registerConfig-page")
+      ipcRenderer.send("load-registerConfig");
     if (data === "load-dashboard-page") ipcRenderer.send("load-dashboard");
-
-
   },
   foward: () => {
     ipcRenderer.send("browser-forward");
