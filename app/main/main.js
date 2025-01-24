@@ -1,72 +1,110 @@
-const path = require("path");
+const path = require('path');
 const {
   app,
   BaseWindow,
   WebContentsView,
   nativeImage,
   ipcMain,
-} = require("electron");
+} = require('electron');
 const {
   setGlobalShortcuts,
   deleteShortcuts,
-} = require("../shortcuts/globalShortcuts");
-const ipcManager = require("../manager/ipcManager");
-const { createDashboardView } = require("../manager/dashboard");
-const fs = require("fs");
+} = require('../shortcuts/globalShortcuts');
+const ipcManager = require('../manager/ipcManager');
+const { createDashboardView } = require('../manager/dashboard');
+const fs = require('fs');
 
 let mainWindow;
 let config = null;
 
 function getDocumentsPath() {
-  if (process.platform === "darwin") {
-    return path.join(app.getPath("home"), "Documents");
-  } else if (process.platform === "win32") {
-    return path.join(app.getPath("userData"), "Documents");
+  if (process.platform === 'darwin') {
+    return path.join(app.getPath('home'), 'Documents');
+  } else if (process.platform === 'win32') {
+    return path.join(app.getPath('home'), 'Documents');
   }
 
-  return app.getPath("home");
+  return app.getPath('home');
 }
 
-const configPath = path.join(getDocumentsPath(), "config.json");
+const configPath = path.join(getDocumentsPath(), 'accex_config.json');
 
 async function createDefaultConfig() {
   const defaultConfig = {
-    language: "es",
-    apiURL: "http://localhost:3000",
+    language: 'es',
+    apiURL: 'http://localhost:3000',
+    sitiosWeb: [
+      {
+        nombre: 'Sitio Web 1',
+        url: 'https://www.electronjs.org/',
+      },
+      {
+        nombre: 'Sitio Web 2',
+        url: 'https://www.openai.com/',
+      },
+      {
+        nombre: 'Sitio Web 3',
+        url: 'https://www.electronjs.org/',
+      },
+      {
+        nombre: 'Sitio Web 4',
+        url: 'https://www.openai.com/',
+      },
+      {
+        nombre: 'Sitio Web 5',
+        url: 'https://www.electronjs.org/',
+      },
+      {
+        nombre: 'Sitio Web 6',
+        url: 'https://www.openai.com/',
+      },
+      {
+        nombre: 'Sitio Web 7',
+        url: 'https://www.electronjs.org/',
+      },
+      {
+        nombre: 'Sitio Web 8',
+        url: 'https://www.openai.com/',
+      },
+      {
+        nombre: 'Sitio Web 9',
+        url: 'https://www.electronjs.org/',
+      },
+    ],
   };
 
   if (!fs.existsSync(configPath)) {
     await fs.writeFileSync(
       configPath,
       JSON.stringify(defaultConfig, null, 2),
-      "utf-8"
+      'utf-8'
     );
-    console.log("Archivo de configuración creado");
+    console.log('Archivo de configuración creado');
   }
 }
 
 async function loadConfig() {
   try {
-    const configData = await fs.readFileSync(configPath, "utf8");
+    const configData = await fs.readFileSync(configPath, 'utf8');
     config = JSON.parse(configData);
   } catch (error) {
-    console.error("Error al leer el archivo de configuración", error);
+    console.error('Error al leer el archivo de configuración', error);
   }
 }
 
 const appIcon = nativeImage.createFromPath(
   path.join(
     __dirname,
-    "..",
-    "assets",
-    "images",
-    "Asistente_ACCEX.png",
-    "icons",
-    "qr.png"
+    '..',
+    'assets',
+    'images',
+    'Asistente_ACCEX.png',
+    'icons',
+    'qr.png'
   )
 );
 
-if (process.platform === "darwin") {
+if (process.platform === 'darwin') {
   app.dock.setIcon(appIcon);
 }
 
@@ -83,7 +121,7 @@ function createAppWindow() {
     resizable: false,
     icon: appIcon,
     webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
+      preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
       enableRemoteModule: false,
       nodeIntegration: false,
@@ -101,10 +139,10 @@ function createSecondaryWindow() {
   let secondaryWindow = new BaseWindow({
     width: 1280,
     height: 720,
-    title: "Ventana Secundaria",
+    title: 'Ventana Secundaria',
     icon: appIcon,
     webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
+      preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
       enableRemoteModule: false,
       nodeIntegration: false,
@@ -113,10 +151,10 @@ function createSecondaryWindow() {
   });
 
   secondaryWindow.loadFile(
-    path.join(__dirname, "..", "renderer", "views", "secondary.html")
+    path.join(__dirname, '..', 'renderer', 'views', 'secondary.html')
   );
 
-  secondaryWindow.on("closed", () => {
+  secondaryWindow.on('closed', () => {
     secondaryWindow = null;
   });
 }
@@ -131,7 +169,7 @@ function resizeMainWindow(width, height) {
     mainWindow.setSize(width, height);
     mainWindow.center(); // Centrar la ventana después de cambiar el tamaño
   } else {
-    console.error("mainWindow no está definido");
+    console.error('mainWindow no está definido');
   }
 }
 
@@ -148,7 +186,7 @@ function startApp() {
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,
-      preload: path.join(__dirname, "preload.js"),
+      preload: path.join(__dirname, 'preload.js'),
     },
   });
   mainWindow.contentView.addChildView(mainView);
@@ -161,7 +199,7 @@ function startApp() {
   });
 
   mainView.webContents.loadFile(
-    path.join(__dirname, "..", "renderer", "views", "index.html")
+    path.join(__dirname, '..', 'renderer', 'views', 'index.html')
   );
 
   // Inicializas tu manager
@@ -175,9 +213,10 @@ function startApp() {
  */
 
 async function initializeApp() {
+  console.log('Inicializando la aplicación');
   await createDefaultConfig();
   await loadConfig();
-  ipcMain.handle("get-config", () => config);
+  ipcMain.handle('get-config', () => config);
 }
 
 app.whenReady().then(async () => {
@@ -185,7 +224,7 @@ app.whenReady().then(async () => {
   startApp();
 
   // Al hacer click en el Dock (en macOS) si no hay ventanas, crea la principal
-  app.on("activate", () => {
+  app.on('activate', () => {
     if (BaseWindow.getAllWindows().length === 0) {
       createAppWindow();
       createDashboardView(mainWindow);
@@ -193,22 +232,22 @@ app.whenReady().then(async () => {
   });
 
   // Manejo de atajos globales según el foco
-  mainWindow.on("focus", () => {
+  mainWindow.on('focus', () => {
     setGlobalShortcuts(mainWindow);
   });
 
-  mainWindow.on("blur", () => {
+  mainWindow.on('blur', () => {
     deleteShortcuts();
   });
 });
 
-app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
     app.quit();
   }
 });
 
-app.on("will-quit", () => {
+app.on('will-quit', () => {
   deleteShortcuts();
 });
 
@@ -217,7 +256,7 @@ app.on("will-quit", () => {
  *   6. IPC PARA ABRIR LA VENTANA SECUNDARIA
  * ==================================================
  */
-ipcMain.on("open-new-window", () => {
+ipcMain.on('open-new-window', () => {
   createSecondaryWindow();
 });
 
