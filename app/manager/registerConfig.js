@@ -47,69 +47,89 @@ function createRegisterConfigView(mainWindow) {
 
   // Ejecutar lógica avanzada dentro del contexto de la vista
   registerConfigView.webContents.executeJavaScript(`
+    const contrastIcons = document.querySelectorAll('.contrast-icon');
+    const leftArrow = document.querySelector('.horizontal-slider .left-arrow');
+    const rightArrow = document.querySelector('.horizontal-slider .right-arrow');
     const modeSwitch = document.querySelector('.toggle-switch input');
     const increaseFontBtn = document.querySelector('.option-card img[alt="Aumento de tamaño"]');
-    const contrastLeftArrow = document.querySelector('.slider-arrow.left-arrow');
-    const contrastRightArrow = document.querySelector('.slider-arrow.right-arrow');
-    const contrastIcons = document.querySelectorAll('.contrast-icons img');
 
     let fontSizeIndex = 0;
-    const fontSizes = ['16px', '18px', '20px']; // Tamaños de fuente
-    let contrastIndex = 0;
+    const fontSizes = ['16px', '18px', '20px'];
 
-    const contrastColors = [
-      { background: '#FFFFFF', text: '#000000' },
-      { background: '#FFD700', text: '#000000' },
-      { background: '#FF4500', text: '#FFFFFF' },
-      { background: '#000000', text: '#FFD700' },
-      { background: '#FFA500', text: '#000000' },
-      { background: '#FFD700', text: '#FFFFFF' },
-      { background: '#FF6347', text: '#FFFFFF' },
-    ];
+    // Theme mapping
+    const themeMap = {
+      'ic_3': '',  // default light mode
+      'ic_1': 'dark-mode',
+      'ic_2': 'ic_2',
+      'ic_5': 'ic_5',
+      'ic_7': 'ic_7',
+      'ic_4': 'ic_4'
+    };
 
-    const applyContrast = (index, isDarkMode) => {
-      const colors = contrastColors[index];
-      document.body.style.background = isDarkMode
-        ? 'linear-gradient(to bottom, #1e1e1e, #2a2a2a)'
-        : 'linear-gradient(to bottom, #f0f8ff, #dceefb)';
-      document.querySelectorAll('.option-card').forEach(card => {
-        card.style.background = isDarkMode ? '#333' : colors.background;
-        card.style.color = isDarkMode ? '#f0f0f0' : colors.text;
+    // Load saved contrast theme
+    const savedContrast = localStorage.getItem('contrastTheme');
+    if (savedContrast) {
+      document.documentElement.className = savedContrast;
+      // Update active icon
+      contrastIcons.forEach(icon => {
+        const iconName = icon.src.split('/').pop().split('.')[0];
+        if (themeMap[iconName] === savedContrast) {
+          icon.classList.add('active');
+        } else {
+          icon.classList.remove('active');
+        }
       });
-      document.querySelector('.controls').style.backgroundColor = isDarkMode
-        ? '#2a2a2a'
-        : colors.background;
-      document.querySelector('.controls').style.color = isDarkMode ? '#f0f0f0' : colors.text;
-    };
+    }
 
-    const initializeContrast = () => {
-      const isDarkMode = modeSwitch.checked;
-      applyContrast(contrastIndex, isDarkMode);
-    };
+    function updateActiveIcon(direction) {
+      const icons = [...contrastIcons];
+      const currentActiveIndex = icons.findIndex(icon => icon.classList.contains('active'));
+      
+      icons[currentActiveIndex].classList.remove('active');
+      
+      let newIndex;
+      if (direction === 'right') {
+        newIndex = (currentActiveIndex + 1) % icons.length;
+      } else {
+        newIndex = (currentActiveIndex - 1 + icons.length) % icons.length;
+      }
+      
+      icons[newIndex].classList.add('active');
 
+      const iconName = icons[newIndex].src.split('/').pop().split('.')[0];
+      const newTheme = themeMap[iconName];
+      
+      document.documentElement.className = newTheme;
+      localStorage.setItem('contrastTheme', newTheme);
+    }
+
+    leftArrow.addEventListener('click', () => updateActiveIcon('left'));
+    rightArrow.addEventListener('click', () => updateActiveIcon('right'));
+
+    // Handle dark mode toggle
     modeSwitch.addEventListener('change', () => {
-      const isDarkMode = modeSwitch.checked;
-      applyContrast(contrastIndex, isDarkMode);
+      if (modeSwitch.checked) {
+        document.documentElement.className = 'dark-mode';
+        localStorage.setItem('contrastTheme', 'dark-mode');
+        contrastIcons.forEach(icon => {
+          const iconName = icon.src.split('/').pop().split('.')[0];
+          icon.classList.toggle('active', iconName === 'ic_1');
+        });
+      } else {
+        document.documentElement.className = '';
+        localStorage.setItem('contrastTheme', '');
+        contrastIcons.forEach(icon => {
+          const iconName = icon.src.split('/').pop().split('.')[0];
+          icon.classList.toggle('active', iconName === 'ic_3');
+        });
+      }
     });
 
+    // Handle font size changes
     increaseFontBtn.addEventListener('click', () => {
       fontSizeIndex = (fontSizeIndex + 1) % fontSizes.length;
       document.documentElement.style.fontSize = fontSizes[fontSizeIndex];
     });
-
-    contrastLeftArrow.addEventListener('click', () => {
-      contrastIndex = (contrastIndex - 1 + contrastColors.length) % contrastColors.length;
-      const isDarkMode = modeSwitch.checked;
-      applyContrast(contrastIndex, isDarkMode);
-    });
-
-    contrastRightArrow.addEventListener('click', () => {
-      contrastIndex = (contrastIndex + 1) % contrastColors.length;
-      const isDarkMode = modeSwitch.checked;
-      applyContrast(contrastIndex, isDarkMode);
-    });
-
-    initializeContrast();
   `);
 }
 

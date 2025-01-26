@@ -16,3 +16,17 @@ window.api.onLoadingStarted(() => {
 window.api.onLoadingStopped(() => {
   document.getElementById("loadingIndicator").style.display = "none";
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Function to update image filters based on theme
+  function updateImageFilters() {
+    const currentTheme = document.documentElement.className;
+    document.querySelectorAll('.sidebutton img:not(#assistant)').forEach(img => {
+      img.style.transition = 'filter 0.3s ease';
+    });
+  }
+
+  // Call on load and theme changes
+  updateImageFilters();
+  window.addEventListener('themeChange', updateImageFilters);
+});

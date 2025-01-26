@@ -1,0 +1,41 @@
+:root {
+  --bg-color: #0D47A1;
+  --text-color: #000000;
+  --nav-bg: #FFFFFF;
+  --sidebar-bg: #b2d5f7;
+}
+
+.dark-mode {
+  --bg-color: #08295C;
+  --text-color: #F0F0F0;
+  --nav-bg: #08295C;
+  --sidebar-bg: #08295C;
+}
+
+.ic_2 {
+  --bg-color: #0D0D0D;
+  --text-color: #0D0D0D;
+  --nav-bg: #FFCC00;
+  --sidebar-bg: #FFCC00;
+}
+
+.ic_5 {
+  --bg-color: #FFCC00;
+  --text-color: #FFCC00;
+  --nav-bg: #0D0D0D;
+  --sidebar-bg: #0D0D0D;
+}
+
+.ic_7 {
+  --bg-color: #FF3B30;
+  --text-color: #FF3B30;
+  --nav-bg: #FFCC00;
+  --sidebar-bg: #FFCC00;
+}
+
+.ic_4 {
+  --bg-color: #FFFFFF;
+  --text-color: #FFFFFF;
+  --nav-bg: #FF3B30;
+  --sidebar-bg: #FF3B30;
+}

@@ -89,7 +89,8 @@
   </div>
   </div>
 </body>
-<script>const modeSwitch = document.querySelector('.toggle-switch input');
+<script>
+  const modeSwitch = document.querySelector('.toggle-switch input');
   const increaseFontBtn = document.querySelector('.option-card img[alt="Aumento de tamaño"]');
   const contrastLeftArrow = document.querySelector('.slider-arrow.left-arrow');
   const contrastRightArrow = document.querySelector('.slider-arrow.right-arrow');
@@ -124,15 +125,18 @@
     document.querySelector('.controls').style.color = isDarkMode ? '#f0f0f0' : colors.text;
   };
 
-  // Initialize contrast colors
-  const initializeContrast = () => {
-    const isDarkMode = modeSwitch.checked;
-    applyContrast(contrastIndex, isDarkMode);
-  };
+  // Cargar preferencia guardada
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    modeSwitch.checked = savedTheme === 'dark';
+    document.documentElement.className = savedTheme + '-mode';
+  }
 
   modeSwitch.addEventListener('change', () => {
-    const isDarkMode = modeSwitch.checked;
-    applyContrast(contrastIndex, isDarkMode);
+    const theme = modeSwitch.checked ? 'dark' : 'light';
+    localStorage.setItem('theme', theme);
+    document.documentElement.className = theme + '-mode';
+    applyContrast(contrastIndex, modeSwitch.checked);
   });
 
   increaseFontBtn.addEventListener('click', () => {
@@ -153,6 +157,6 @@
   });
 
   // Initialize with default contrast (modo claro)
-  initializeContrast();
+  applyContrast(contrastIndex, modeSwitch.checked);
 </script>
 </html>

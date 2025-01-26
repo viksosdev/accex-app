@@ -5,8 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registro ACCEX</title>
     <link rel="stylesheet" href="../styles/register.css" />
+    <link rel="stylesheet" href="../styles/theme.css">
+    <style>
+      body {
+        background: white;
+        color: var(--text-color);
+      }
+      /* Resto de estilos existentes... */
+    </style>
   </head>
   <body>
+    <script>
+      // Apply theme on load
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.className = savedTheme + '-mode';
+    </script>
     <div class="title-bar">
       <div class="logo">
         <img

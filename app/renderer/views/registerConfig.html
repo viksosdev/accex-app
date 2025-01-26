@@ -4,13 +4,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Configuración Avanzada</title>
+  <link rel="stylesheet" href="../styles/contrast-themes.css">
+  <link rel="stylesheet" href="../styles/contrast-themes.css">
   <link rel="stylesheet" href="../styles/registerConfig.css">
+  <style>
+    /* Add transition for smooth theme changes */
+    body, .container, .header, .title, .subtitle, 
+    .option-card, .controls, .control-label, 
+    .slider-arrow, .save-button {
+      transition: all 0.3s ease;
+    }
+
+    /* Theme-based styles */
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+    }
+
+    .title, .control-label {
+      color: var(--text-primary);
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+    }
+
+    .option-card {
+      background: var(--card-bg);
+      color: var(--text-primary);
+    }
+
+    .controls {
+      background-color: var(--control-bg);
+    }
+
+    .slider-arrow {
+      background: var(--button-bg);
+    }
+
+    .slider-arrow:hover {
+      background: var(--button-hover);
+    }
+
+    .save-button {
+      background: var(--button-bg);
+    }
+
+    .save-button:hover {
+      background: var(--button-hover);
+    }
+
+    .accessibility-card {
+      background: var(--card-bg);
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <!-- Encabezado -->
     <header class="header">
-      <img src="../../assets/icons/ic_accex.png" alt="Logo Accex" class="logo">
+      <img src="../../assets/icons/contraste/ic_accex_bar_ic_3.png" alt="Logo Accex" class="logo">
       <h1 class="title">Configuración Avanzada</h1>
       <button class="back-button">⬅</button>
     </header>
@@ -42,13 +95,12 @@
         <div class="horizontal-slider">
           <button class="slider-arrow left-arrow">◀</button>
           <div class="contrast-icons">
-              <img src="../../assets/icons/contraste/ic_1.png" alt="contrast-icon">
-              <img src="../../assets/icons/contraste/ic_2.png" alt="contrast-icon">
-              <img src="../../assets/icons/contraste/ic_3.png" alt="contrast-icon">
-              <img src="../../assets/icons/contraste/ic_4.png" alt="contrast-icon">
-              <img src="../../assets/icons/contraste/ic_5.png" alt="contrast-icon">
-              <img src="../../assets/icons/contraste/ic_6.png" alt="contrast-icon">
-              <img src="../../assets/icons/contraste/ic_7.png" alt="contrast-icon">
+              <img src="../../assets/icons/contraste/ic_3.png" alt="contrast-icon" class="contrast-icon">
+              <img src="../../assets/icons/contraste/ic_1.png" alt="contrast-icon" class="contrast-icon">
+              <img src="../../assets/icons/contraste/ic_2.png" alt="contrast-icon" class="contrast-icon">
+              <img src="../../assets/icons/contraste/ic_5.png" alt="contrast-icon" class="contrast-icon">
+              <img src="../../assets/icons/contraste/ic_7.png" alt="contrast-icon" class="contrast-icon">
+              <img src="../../assets/icons/contraste/ic_4.png" alt="contrast-icon" class="contrast-icon">
           </div>
           <button class="slider-arrow right-arrow">▶</button>
         </div>

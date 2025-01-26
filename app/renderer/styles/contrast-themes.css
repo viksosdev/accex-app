@@ -1,0 +1,130 @@
+/* Base theme (light) */
+:root {
+    /* Register config variables */
+    --bg-primary: linear-gradient(to bottom, #f0f8ff, #dceefb);
+    --text-primary: #003366;
+    --text-secondary: #555;
+    --card-bg: #fff;
+    --control-bg: #f9f9f9;
+    --button-bg: #007bff;
+    --button-hover: #0056b3;
+    /* Frame/Navigation variables */
+    --bg-color: #FFFFFF;
+    --text-color: #000000;
+    --nav-bg: #DCEDFE;
+    --sidebar-bg: #b2d5f7;
+  }
+  
+  /* Dark mode modifier */
+  .dark-mode {
+    /* Register config variables */
+    --bg-primary: linear-gradient(to bottom, #1a1a1a, #2d2d2d);
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --card-bg: #333333;
+    --control-bg: #2d2d2d;
+    --button-bg: #0056b3;
+    --button-hover: #003d80;
+    /* Frame/Navigation variables */
+    --bg-color: #08295C;
+    --text-color: #F0F0F0;
+    --nav-bg: #08295C;
+    --sidebar-bg: #08295C;
+  }
+  
+  /* Contrast Themes - Match with contrast icons */
+  .ic_1 {
+    /* Register config variables */
+    --bg-primary: linear-gradient(to bottom, #1a1a1a, #2d2d2d);
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --card-bg: #333333;
+    --control-bg: #2d2d2d;
+    --button-bg: #0056b3;
+    --button-hover: #003d80;
+    /* Frame/Navigation variables */
+    --bg-color: #08295C;
+    --text-color: #F0F0F0;
+    --nav-bg: #08295C;
+    --sidebar-bg: #08295C;
+  }
+  
+  .ic_2 {
+    /* Register config variables */
+    --bg-primary: linear-gradient(to bottom, #FFCC00, #FFE066);
+    --text-primary: #0D0D0D;
+    --text-secondary: #333333;
+    --card-bg: #FFCC00;
+    --control-bg: #FFE066;
+    --button-bg: #0D0D0D;
+    --button-hover: #333333;
+    /* Frame/Navigation variables */
+    --bg-color: #0D0D0D;
+    --text-color: #0D0D0D;
+    --nav-bg: #FFCC00;
+    --sidebar-bg: #FFCC00;
+  }
+  
+  .ic_3 {
+    /* Register config variables */
+    --bg-primary: linear-gradient(to bottom, #f0f8ff, #dceefb);
+    --text-primary: #003366;
+    --text-secondary: #555;
+    --card-bg: #fff;
+    --control-bg: #f9f9f9;
+    --button-bg: #007bff;
+    --button-hover: #0056b3;
+    /* Frame/Navigation variables */
+    --bg-color: #0D47A1;
+    --text-color: #000000;
+    --nav-bg: #FFFFFF;
+    --sidebar-bg: #b2d5f7;
+  }
+  
+  .ic_4 {
+    /* Register config variables */
+    --bg-primary: linear-gradient(to bottom, #FF3B30, #FF6B66);
+    --text-primary: #FFFFFF;
+    --text-secondary: #EEEEEE;
+    --card-bg: #FF3B30;
+    --control-bg: #FF6B66;
+    --button-bg: #FFFFFF;
+    --button-hover: #EEEEEE;
+    /* Frame/Navigation variables */
+    --bg-color: #FFFFFF;
+    --text-color: #FFFFFF;
+    --nav-bg: #FF3B30;
+    --sidebar-bg: #FF3B30;
+  }
+  
+  .ic_5 {
+    /* Register config variables */
+    --bg-primary: linear-gradient(to bottom, #0D0D0D, #333333);
+    --text-primary: #FFCC00;
+    --text-secondary: #FFE066;
+    --card-bg: #0D0D0D;
+    --control-bg: #333333;
+    --button-bg: #FFCC00;
+    --button-hover: #FFE066;
+    /* Frame/Navigation variables */
+    --bg-color: #FFCC00;
+    --text-color: #FFCC00;
+    --nav-bg: #0D0D0D;
+    --sidebar-bg: #0D0D0D;
+  }
+  
+  .ic_7 {
+    /* Register config variables */
+    --bg-primary: linear-gradient(to bottom, #FFCC00, #FFE066);
+    --text-primary: #FF3B30;
+    --text-secondary: #FF6B66;
+    --card-bg: #FFCC00;
+    --control-bg: #FFE066;
+    --button-bg: #FF3B30;
+    --button-hover: #FF6B66;
+    /* Frame/Navigation variables */
+    --bg-color: #FF3B30;
+    --text-color: #FF3B30;
+    --nav-bg: #FFCC00;
+    --sidebar-bg: #FFCC00;
+  }
