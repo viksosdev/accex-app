@@ -30,7 +30,9 @@
 
       async function initializeApp() {
         try {
-          const config = await window.electronAPI.getConfig();
+          const config = {
+            apiURL: "http://localhost:3000",
+          };
 
           if (config && config.apiURL) {
             apiURL = config.apiURL;
